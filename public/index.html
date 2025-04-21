@@ -5,507 +5,612 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Community NextGen</title>
+        <title>NextGen In A Box</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
+        <!-- Font Awesome icons -->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: 'rgb(49, 125, 140)',
+                            'primary-light': 'rgb(62, 158, 177)',
+                        },
+                        fontFamily: {
+                            'montserrat': ['Montserrat', 'sans-serif'],
+                            'roboto-slab': ['Roboto Slab', 'serif'],
+                        },
+                    },
+                },
+            }
+        </script>
+        <style type="text/tailwindcss">
+            @layer base {
+                html {
+                    font-size: 55%;
+                }
+                @screen xl {
+                    html {
+                        font-size: 80%;
+                    }
+                }
+                @screen 2xl {
+                    html {
+                        font-size: 100%;
+                    }
+                }
+            }
+            @layer components {
+                .btn-primary {
+                    @apply bg-primary hover:bg-primary-light text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300;
+                }
+                .section-heading {
+                    @apply text-4xl font-bold uppercase mb-4;
+                }
+                .section-subheading {
+                    @apply text-gray-600 text-xl mb-16;
+                }
+            }
+        </style>
     </head>
-    <body id="page-top">
-      
+    <body class="font-montserrat" id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Learn more</a></li>
-                    </ul>
+        <nav class="bg-gray-900 fixed w-full z-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <a class="text-white text-xl font-bold" href="#page-top"></a>
+                    <button class="lg:hidden text-white" type="button" id="navbarToggle">
+                        Menu
+                        <i class="fas fa-bars ml-1"></i>
+                    </button>
+                    <div class="hidden lg:flex" id="navbarMenu">
+                        <ul class="flex space-x-8">
+                            <li><a class="nav-link text-white hover:text-primary uppercase" href="#about">About</a></li>
+                            <li><a class="nav-link text-white hover:text-primary uppercase" href="#portfolio">Tools</a></li>
+                            <li><a class="nav-link text-white hover:text-primary uppercase" href="#architecture">Architecture</a></li>
+                            <li><a class="nav-link text-white hover:text-primary uppercase" href="#contact">Learn more</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <video autoplay muted loop id="video-background">
-              <source src="/assets/video/water-video.mp4" type="video/mp4">
-              <source src="./assets/video/water-video.webm" type="video/webm">
-              Your browser does not support the video tag.
-            </video>
 
-            <div class="container">
-                <div class="masthead-heading text-uppercase">Community NextGen</div>
-                <div class="masthead-subheading">Transforming Water Modeling in Minutes</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">Our tools</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="http://docs.ciroh.org/training-NGIAB-101/">Getting started</a>
+        <!-- Masthead-->
+        <header class="relative h-screen flex items-center justify-center text-white">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+                <source src="/assets/video/water-video.mp4" type="video/mp4">
+                <source src="./assets/video/water-video.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h1 class="text-7xl font-bold uppercase mb-6">NextGen In A Box</h1>
+                <p class="text-4xl mb-12">Transforming Water Modeling in Minutes</p>
+                <div class="space-x-6">
+                    <a class="btn-primary text-xl px-12 py-4" href="#portfolio">Our tools</a>
+                    <a class="btn-primary text-xl px-12 py-4" href="http://docs.ciroh.org/training-NGIAB-101/">Getting started</a>
+                </div>
             </div>
         </header>
-        <!-- About-->
+
         <div id="root"></div>
-        <section class="page-section" id="about">
-            <div class="container">
+
+        <!-- About-->
+        <section class="py-20" id="about">
+            <div class="container mx-auto px-4 max-w-7xl">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">OUR PURPOSE</h2>
-                    <h3 class="section-subheading text-muted">Empowering researchers, communities, and decision-makers with accessible and innovative hydrological modeling solutions.</h3>
+                    <h2 class="section-heading">OUR PURPOSE</h2>
+                    <h3 class="section-subheading">Empowering researchers, communities, and decision-makers with accessible and innovative hydrological modeling solutions.</h3>
                 </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-bullseye fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Goal</h4>
-                        <p class="text-muted">To revolutionize hydrological modeling by making the NextGen Framework accessible, scalable, and user-friendly to researchers.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
+                            <i class="fas fa-bullseye text-4xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">Goal</h4>
+                        <p class="text-gray-600">To revolutionize hydrological modeling by making the NextGen Framework accessible, scalable, and user-friendly to researchers.</p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-rocket fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Mission</h4>
-                        <p class="text-muted">To make NextGen accessible to all, from local communities to global researchers, by providing user-friendly tools and reproducible workflows.</p>
+                    <div>
+                        <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
+                            <i class="fas fa-rocket text-4xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">Mission</h4>
+                        <p class="text-gray-600">To make NextGen accessible to all, from local communities to global researchers, by providing user-friendly tools and reproducible workflows.</p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-eye fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Vision</h4>
-                        <p class="text-muted">To create a collaborative ecosystem where shared advancements in hydrological modeling drive innovation.</p>
+                    <div>
+                        <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
+                            <i class="fas fa-eye text-4xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">Vision</h4>
+                        <p class="text-gray-600">To create a collaborative ecosystem where shared advancements in hydrological modeling drive innovation.</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
+        <section class="bg-gray-100 py-20" id="portfolio">
+            <div class="container mx-auto px-4 max-w-7xl">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">NextGen In A Box Tools</h2>
-                    <h3 class="section-subheading text-muted">From data preprocessing with NGIAB DataPreprocess to real-time visualization on the Tethys Platform, these tools work together to empower researchers to drive innovation in hydrology.</h3>
+                    <h2 class="section-heading">NextGen In A Box Tools</h2>
+                    <h3 class="section-subheading">From data preprocessing with NGIAB DataPreprocess to real-time visualization on the Tethys Platform, these tools work together to empower researchers to drive innovation in hydrology.</h3>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/ngiab_data_preprocess.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-DataPreprocess</div>
-                                <div class="portfolio-caption-subheading text-muted">Data Preparation</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio items -->
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal1')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngiab_data_preprocess.jpg" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-DataPreprocess</h4>
+                            <p class="text-gray-600">Data Preparation</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/ngiab_cloudinfra.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-CloudInfra</div>
-                                <div class="portfolio-caption-subheading text-muted">Cloud Deployment</div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal2')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngiab_cloudinfra.jpg" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-CloudInfra</h4>
+                            <p class="text-gray-600">Cloud Deployment</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid " src="assets/img/portfolio/ngiab_hpcinfra.jpeg" height="358px" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-HPCInfra</div>
-                                <div class="portfolio-caption-subheading text-muted">HPC Solutions</div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal3')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngiab_hpcinfra.jpeg" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-HPCInfra</h4>
+                            <p class="text-gray-600">HPC Solutions</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/ngiab_teehr.png" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-TEEHR</div>
-                                <div class="portfolio-caption-subheading text-muted">Evalutation and Analysis</div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal4')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngiab_teehr.png" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-TEEHR</h4>
+                            <p class="text-gray-600">Evalutation and Analysis</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 5-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/ngiab_visualizer.jpeg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-Visualizer</div>
-                                <div class="portfolio-caption-subheading text-muted">Data Visualizations</div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal5')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngiab_visualizer.jpeg" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-Visualizer</h4>
+                            <p class="text-gray-600">Data Visualization</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/ngen_datastream.jpeg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">NGIAB-DataStream</div>
-                                <div class="portfolio-caption-subheading text-muted">Workflow Orchestration</div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden group">
+                        <a class="block relative cursor-pointer" onclick="openModal('portfolioModal6')">
+                            <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-75 transition-opacity duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus text-white text-3xl opacity-0 group-hover:opacity-100"></i>
                             </div>
+                            <img class="w-full" src="assets/img/portfolio/ngen_datastream.jpeg" alt="..." />
+                        </a>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">NGIAB-DataStream</h4>
+                            <p class="text-gray-600">Workflow Orchestration</p>
                         </div>
                     </div>
-                 
-                    </div>
+
                 </div>
             </div>
         </section>
+
         <!-- Architecture-->
-        <section class="page-section" id="architecture">
-            <div class="container">
+        <section class="py-20" id="architecture">
+            <div class="container mx-auto px-4 max-w-7xl">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">NGIAB Containerization Architechture</h2>
-                    <h3 class="section-subheading text-muted">NGIAB is designed as a multi-layered containerized tool that encapsulates the NextGen Framework along with many components relevant to the NWM within a reproducible environment. By leveraging Docker and Singularity, NGIAB mitigates deployment barriers, ensuring accessibility, consistency, and ease of use across local machines, cloud platforms, and HPC environments. </h3>
+                    <h2 class="section-heading">NGIAB Containerization Architecture</h2>
+                    <h3 class="section-subheading">NGIAB is designed as a multi-layered containerized tool that encapsulates the NextGen Framework along with many components relevant to the NWM within a reproducible environment.</h3>
                 </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/architecture/1.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Core Framework</h4>
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="space-y-12">
+                        <div class="flex items-center">
+                            <div class="w-40 h-40 rounded-full overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" src="assets/img/architecture/1.jpg" alt="..." />
                             </div>
-                            <div class="timeline-body"><p class="text-muted">At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric, designed to work together within the NextGen Framework. </p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/architecture/2.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>CI/CD Pipeline</h4>
+                            <div class="ml-8">
+                                <h4 class="text-2xl font-bold mb-2">Core Framework</h4>
+                                <p class="text-gray-600">At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric, designed to work together within the NextGen Framework.</p>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">This core is wrapped by the CI/CD Pipeline layer (Layer 2), which leverages GitHub Actions to ensure automated testing, integration, and deployment capabilities for reproducible workflows.</p></div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/architecture/3.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>NGIAB Containerization</h4>
+                        <div class="flex items-center">
+                            <div class="w-40 h-40 rounded-full overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" src="assets/img/architecture/2.jpg" alt="..." />
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The NGIAB Containerization layer (Layer 3) provides the containerized environment and essential configuration tools.</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/architecture/4.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Technologies and Methods</h4>
+                            <div class="ml-8">
+                                <h4 class="text-2xl font-bold mb-2">CI/CD Pipeline</h4>
+                                <p class="text-gray-600">This core is wrapped by the CI/CD Pipeline layer (Layer 2), which leverages GitHub Actions to ensure automated testing, integration, and deployment capabilities for reproducible workflows.</p>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The outermost layer (Layer 4), Technologies & Methods, provides broader infrastructure, best practices, and support for deployment across different computing environments (local, cloud, HPC), and facilitates community engagement and contribution.</p></div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-       
-      
-        <!-- Contact-->
-        <section class="page-section"  id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Find out more</h2>
-                    <br>
-
-                    <h3 class="section-subheading-nomargin text-light">
-                        Want to learn more about NextGen in a Box? Get started with these resources!
-                    </h3>
-                    <p class="text-light">
-                        Learn about the NGIAB platform on <a class="text-light-link" href="https://docs.ciroh.org/">DocuHub</a>
-                        <br>
-                        Join the <a class="text-light-link" href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/ngiabOfficeHours">NextGen Community Office Hours</a>
-                    </p>
-                    <br>
-
-                    <h3 class="section-subheading-nomargin text-light">
-                        Also, please feel free to contact us with any questions!
-                    </h3>
-                    <p class="text-light">
-                        Email us: <a class="text-light-link" href="mailto:ciroh-it-admin@ua.edu">ciroh-it-admin@ua.edu</a>
-                        <br>
-                        Chat with us on Slack: <a class="text-light-link" href="https://cirohworkspace.slack.com/archives/C057BLQB867">#ciroh-ua-it-support</a>
-                    </p>
-                    <p class="text-light mt-md-5 mb-md-0 fst-italic">This project received funding under award NA22NWS4320003 from NOAA Cooperative Institute Program. The statements, findings, conclusions, and recommendations are those of the author(s) and do not necessarily reflect the views of NOAA.</p>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; 2025 CIROH</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="https://github.com/CIROH-UA" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/company/uaciroh/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/UACIROH/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/UA_CIROH" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/ua_ciroh/" aria-label="Facebook"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.youtube.com/@UA_CIROH" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <div class="flex items-center">
+                            <div class="w-40 h-40 rounded-full overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" src="assets/img/architecture/3.jpg" alt="..." />
+                            </div>
+                            <div class="ml-8">
+                                <h4 class="text-2xl font-bold mb-2">NGIAB Containerization</h4>
+                                <p class="text-gray-600">The NGIAB Containerization layer (Layer 3) provides the containerized environment and essential configuration tools.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-40 h-40 rounded-full overflow-hidden flex-shrink-0">
+                                <img class="w-full h-full object-cover" src="assets/img/architecture/4.jpg" alt="..." />
+                            </div>
+                            <div class="ml-8">
+                                <h4 class="text-2xl font-bold mb-2">Technologies and Methods</h4>
+                                <p class="text-gray-600">The outermost layer (Layer 4), Technologies & Methods, provides broader infrastructure, best practices, and support for deployment across different computing environments (local, cloud, HPC), and facilitates community engagement and contribution.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Add other timeline items with the same structure -->
                     </div>
-                    <!--<div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                    </div>-->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact-->
+        <section class="bg-gray-900 text-white py-20" id="contact">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="text-center">
+                    <h2 class="section-heading text-white">Find out more</h2>
+                    <h3 class="section-subheading text-gray-300">Join our community and start your journey with NextGen in a Box</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-5xl mx-auto">
+                    <!-- Resources Section -->
+                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg transform transition duration-300 hover:scale-105">
+                        <div class="flex items-center mb-6">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white">
+                                <i class="fas fa-book text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold ml-4">Learning Resources</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-3"></i>
+                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Learn about the NGIAB platform on DocuHub
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-3"></i>
+                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/ngiabOfficeHours" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Join the NextGen Community Office Hours
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-primary mr-3"></i>
+                                <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Explore our NGIAB-CloudInfra GitHub repository
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg transform transition duration-300 hover:scale-105">
+                        <div class="flex items-center mb-6">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold ml-4">Get in Touch</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-primary mr-3"></i>
+                                <a href="mailto:ciroh-it-admin@ua.edu" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Email: ciroh-it-admin@ua.edu
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-slack text-primary mr-3"></i>
+                                <a href="https://cirohworkspace.slack.com/archives/C057BLQB867" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Slack: #ciroh-ua-it-support
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-users text-primary mr-3"></i>
+                                <a href="#" class="text-gray-300 hover:text-primary transition duration-300">
+                                    Join our community forums
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+
+                <div class="mt-16 text-center">
+                    <div class="inline-block bg-gray-800 rounded-lg px-8 py-6 max-w-3xl">
+                        <p class="text-sm text-gray-400 italic">
+                            This project received funding under award NA22NWS4320003 from NOAA Cooperative Institute Program. The statements, findings, conclusions, and recommendations are those of the author(s) and do not necessarily reflect the views of NOAA.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <footer class="bg-white py-8">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="flex justify-center items-center space-x-12">
+                    <p class="text-gray-900">&copy; 2025 CIROH</p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="https://github.com/CIROH-UA" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/company/uaciroh/" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/UACIROH/" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/UA_CIROH" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ua_ciroh/" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@UA_CIROH" class="text-gray-900 hover:text-primary text-2xl"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
         </footer>
-        <!-- Portfolio Modals-->
+
+        <!-- Portfolio Modals -->
         <!-- Portfolio item 1 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-DataPreprocess</h2>
-                                    <p class="item-intro text-muted">Data Preparation</p>
-                                    <p>
-                                        The Data Preprocess tool simplifies and accelerates the data preparation for NextGen simulations. Data Preprocess tool subsets hydrofabric data, calculates forcings using weighted means of AORC 1km gridded data or NWM retrospective v3 forcing data, and creates configuration files like <i>realization.json</i> and <i>troute.yaml</i> for seamless integration with NextGen. It offers a user-friendly graphical user interface (GUI) and a command-line interface (CLI).
-                                        <br />
-                                        <br />
-                                        With the intuitive GUI, users can easily select catchments and define date ranges using an interactive map, simplifying the subsetting of hydrofabrics, generation of forcings, and creation of default NGIAB realizations. This streamlined approach reduces procedural complexity, making it easier to prepare input data and run simulations efficiently. It also supports users with a command-line interface (CLI) to prepare input data and run simulations. Designed to reduce procedural complexity, Data Preprocess ensures efficient workflows while maintaining flexibility for customization. Whether you're running a single simulation or automating large-scale workflows, this tool empowers you to focus on your research by handling the heavy lifting of data preparation.
-                             
-                                        </p>
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal1">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal1')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-DataPreprocess</h2>
+                    <p class="text-gray-600 mb-4">Data Preparation</p>
+                    <p class="text-gray-700 mb-8">
+                        The Data Preprocess tool simplifies and accelerates the data preparation for NextGen simulations. Data Preprocess tool subsets hydrofabric data, calculates forcings using weighted means of AORC 1km gridded data or NWM retrospective v3 forcing data, and creates configuration files like realization.json and troute.yaml for seamless integration with NextGen. It offers a user-friendly graphical user interface (GUI) and a command-line interface (CLI).
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal1')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 2 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-CloudInfra</h2>
-                                    <p class="item-intro text-muted">Cloud Deployment</p>
-                                    <p>NGIAB-CloudInfra provides a containerized, pre-configured solution using Docker, simplifying the deployment of the NextGen Framework and NWM 4.0 components for local machines and cloud environments (AWS, Azure, etc.). With automated CI/CD pipelines and built-in Basic Model Interface (BMI) support, researchers can bypass complex setup processes and focus on running customized hydrologic models. It is ideal for scalable simulations, collaborative projects, and rapid prototyping. NGIAB-CloudInfra ensures reproducibility, cross-platform compatibility, and seamless integration with cloud workflows.</p>
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal2">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal2')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-CloudInfra</h2>
+                    <p class="text-gray-600 mb-4">Cloud Deployment</p>
+                    <p class="text-gray-700 mb-8">
+                        NGIAB-CloudInfra provides a containerized, pre-configured solution using Docker, simplifying the deployment of the NextGen Framework and NWM 4.0 components for local machines and cloud environments (AWS, Azure, etc.). With automated CI/CD pipelines and built-in Basic Model Interface (BMI) support, researchers can bypass complex setup processes and focus on running customized hydrologic models. It is ideal for scalable simulations, collaborative projects, and rapid prototyping. NGIAB-CloudInfra ensures reproducibility, cross-platform compatibility, and seamless integration with cloud workflows.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal2')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 3 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-HPCInfra</h2>
-                                    <p class="item-intro text-muted">HPC Solutions</p>
-                                    <p>NGIAB-HPCInfra leverages Singularity containers to deliver efficient, secure, and scalable execution of the NextGen Framework on HPC clusters. NGIAB-HPCInfra eliminates the need for root access while maintaining performance. Designed for multi-user environments, it integrates seamlessly with job schedulers (SLURM, PBS, etc.) and supports NWM 4.0-ready components, allowing large-scale hydrologic modeling with minimal setup. By combining BMI-coupled interoperability with HPC-optimized workflows, NGIAB-HPCInfra empowers researchers to run high-resolution, continental-scale simulations.
-                                    </p>
-
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/NGIAB-HPCInfra" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal3">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal3')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-HPCInfra</h2>
+                    <p class="text-gray-600 mb-4">HPC Solutions</p>
+                    <p class="text-gray-700 mb-8">
+                        NGIAB-HPCInfra leverages Singularity containers to deliver efficient, secure, and scalable execution of the NextGen Framework on HPC clusters. NGIAB-HPCInfra eliminates the need for root access while maintaining performance. Designed for multi-user environments, it integrates seamlessly with job schedulers (SLURM, PBS, etc.) and supports NWM 4.0-ready components, allowing large-scale hydrologic modeling with minimal setup. By combining BMI-coupled interoperability with HPC-optimized workflows, NGIAB-HPCInfra empowers researchers to run high-resolution, continental-scale simulations.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/NGIAB-HPCInfra" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal3')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 4 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-TEEHR</h2>
-                                    <p class="item-intro text-muted">Evaluation and Analysis</p>
-                                    <p>
-                                        TEEHR is a Python-based package designed to empower researchers with advanced tools for iterative and exploratory analysis of hydrologic model performance. Built on PySpark for distributed computing, TEEHR delivers scalable data processing capabilities while ensuring data integrity through its robust internal framework.
-                                        <br />
-                                        <br />
-
-                                        This versatile tool enables users to define custom metrics, implement bootstrapping, and perform advanced data manipulation through grouping and filtering operations. TEEHR also provides tools to fetch critical datasets, including USGS streamflow data and NWM gridded and point-based retrospective and near real-time forecast data. TEEHR also supports comprehensive model evaluation and uncertainty analysis. TEEHR enables researchers to investigate key drivers such as climate variability, time-period influences, and basin characteristics. Its flexible tools allow for the exploration of a wide range of metrics, including error statistics, skill scores, hydrologic signatures, and uncertainty quantification.
-                                        <br />
-                                        <br />
-                                        TEEHR can be used independently through Python notebooks or scripts, making it a versatile and accessible framework for researchers. Whether you’re analyzing trends, evaluating models, or exploring new hypotheses, TEEHR provides the tools you need to advance hydrologic research with confidence.
-                                    </p>
-                                  
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/ngiab-teehr" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal4">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal4')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-TEEHR</h2>
+                    <p class="text-gray-600 mb-4">Evaluation and Analysis</p>
+                    <p class="text-gray-700 mb-8">
+                        TEEHR is a Python-based package designed to empower researchers with advanced tools for iterative and exploratory analysis of hydrologic model performance. Built on PySpark for distributed computing, TEEHR delivers scalable data processing capabilities while ensuring data integrity through its robust internal framework.
+                        <br /><br />
+                        This versatile tool enables users to define custom metrics, implement bootstrapping, and perform advanced data manipulation through grouping and filtering operations. TEEHR also provides tools to fetch critical datasets, including USGS streamflow data and NWM gridded and point-based retrospective and near real-time forecast data. TEEHR also supports comprehensive model evaluation and uncertainty analysis. TEEHR enables researchers to investigate key drivers such as climate variability, time-period influences, and basin characteristics. Its flexible tools allow for the exploration of a wide range of metrics, including error statistics, skill scores, hydrologic signatures, and uncertainty quantification.
+                        <br /><br />
+                        TEEHR can be used independently through Python notebooks or scripts, making it a versatile and accessible framework for researchers. Whether you're analyzing trends, evaluating models, or exploring new hypotheses, TEEHR provides the tools you need to advance hydrologic research with confidence.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/ngiab-teehr" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal4')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 5 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-Visualizer</h2>
-                                    <p class="item-intro text-muted">Data Visualization</p>
-                                    <p>
-                                        The Data Visualizer component, built on the Tethys Platform, provides a powerful, web-based environment for geospatial and time series visualization of hydrological data. This tool allows researchers to explore catchments and nexus points in both spatial and temporal contexts, offering interactive map-based displays and dynamic time series plots. It seamlessly integrates with outputs from the Data Preprocess and TEEHR tools, enabling users to visualize tabular metrics, hydrologic signatures, and model performance trends. By facilitating a deeper understanding of key hydrological processes and model outputs, the Data Visualizer empowers researchers to analyze and interpret complex data with ease. Whether you're examining spatial patterns or temporal trends, this component provides the intuitive tools needed to gain actionable insights from your simulations.
-                                    </p>
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/ngiab-client" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal5">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal5')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-Visualizer</h2>
+                    <p class="text-gray-600 mb-4">Data Visualization</p>
+                    <p class="text-gray-700 mb-8">
+                        The Data Visualizer component, built on the Tethys Platform, provides a powerful, web-based environment for geospatial and time series visualization of hydrological data. This tool allows researchers to explore catchments and nexus points in both spatial and temporal contexts, offering interactive map-based displays and dynamic time series plots. It seamlessly integrates with outputs from the Data Preprocess and TEEHR tools, enabling users to visualize tabular metrics, hydrologic signatures, and model performance trends. By facilitating a deeper understanding of key hydrological processes and model outputs, the Data Visualizer empowers researchers to analyze and interpret complex data with ease. Whether you're examining spatial patterns or temporal trends, this component provides the intuitive tools needed to gain actionable insights from your simulations.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/ngiab-client" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal5')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 6 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">NGIAB-DataStream</h2>
-                                    <p class="item-intro text-muted">Workflow Orchestration</p>
-                                    <p>
-                                        The NextGen Research DataStream is a daily, CONUS-wide hydrologic simulations in the AWS cloud with publicly accessible inputs, outputs and configurations. It leverages the NextGen Framework to orchestrate physical and machine learning-based models within the NGIAB Docker environment. The open-source realization file, available on GitHub, allows researchers to propose edits, enabling continuous refinement of simulation accuracy. Complementing this, DataStreamCLI serves as the backend software, offering a powerful command-line interface to automate data collection, model execution, and output management. Designed for efficiency and reproducibility, DataStreamCLI handles complex workflows, version control, and large-scale simulations (>10,000 catchments) with ease. Together, these tools provide a robust, scalable, and community-accessible platform for advancing hydrologic research and prediction.
-                                    </p>
-                                    <!-- GitHub Link with Logo and Close Button -->
-                                    <div class="d-flex justify-content-center mb-4">
-                                        <!-- GitHub Button -->
-                                        <a href="https://github.com/CIROH-UA/ngen-datastream" target="_blank" class="btn btn-dark btn-xl text-uppercase me-2">
-                                            <i class="fab fa-github me-1"></i> View Source Code
-                                        </a>
-
-                                        <!-- Close Button -->
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            Close
-                                        </button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center" id="portfolioModal6">
+            <div class="relative mx-auto p-8 border w-11/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-2/5 shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-end">
+                    <button class="text-gray-400 hover:text-gray-500" onclick="closeModal('portfolioModal6')">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-3 text-center">
+                    <h2 class="section-heading">NGIAB-DataStream</h2>
+                    <p class="text-gray-600 mb-4">Workflow Orchestration</p>
+                    <p class="text-gray-700 mb-8">
+                        The NextGen Research DataStream is a daily, CONUS-wide hydrologic simulations in the AWS cloud with publicly accessible inputs, outputs and configurations. It leverages the NextGen Framework to orchestrate physical and machine learning-based models within the NGIAB Docker environment. The open-source realization file, available on GitHub, allows researchers to propose edits, enabling continuous refinement of simulation accuracy. Complementing this, DataStreamCLI serves as the backend software, offering a powerful command-line interface to automate data collection, model execution, and output management. Designed for efficiency and reproducibility, DataStreamCLI handles complex workflows, version control, and large-scale simulations (>10,000 catchments) with ease. Together, these tools provide a robust, scalable, and community-accessible platform for advancing hydrologic research and prediction.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/CIROH-UA/ngen-datastream" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300">
+                            <i class="fab fa-github me-1"></i> View Source Code
+                        </a>
+                        <button class="btn-primary" onclick="closeModal('portfolioModal6')" type="button">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+
+        <!-- Simple JavaScript for mobile menu toggle and modals -->
+        <script>
+            // Mobile menu toggle
+            document.getElementById('navbarToggle').addEventListener('click', function() {
+                document.getElementById('navbarMenu').classList.toggle('hidden');
+            });
+
+            // Modal functions
+            function openModal(modalId) {
+                document.getElementById(modalId).classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Restore scrolling when modal is closed
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                if (event.target.classList.contains('fixed')) {
+                    closeModal(event.target.id);
+                }
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const modals = document.querySelectorAll('[id^="portfolioModal"]');
+                    modals.forEach(modal => {
+                        if (!modal.classList.contains('hidden')) {
+                            closeModal(modal.id);
+                        }
+                    });
+                }
+            });
+
+            // Scroll spy functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+
+                function resetActiveLinks() {
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-primary');
+                        link.classList.add('text-white');
+                    });
+                }
+
+                function setActiveLink(id) {
+                    resetActiveLinks();
+                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.remove('text-white');
+                        activeLink.classList.add('text-primary');
+                    }
+                }
+
+                function onScroll() {
+                    const scrollPos = window.scrollY + window.innerHeight / 2;
+
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+
+                        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                            setActiveLink(section.id);
+                        }
+                    });
+
+                    // Special case for top of page
+                    if (window.scrollY < 100) {
+                        resetActiveLinks();
+                    }
+                }
+
+                // Add scroll event listener
+                window.addEventListener('scroll', onScroll);
+                
+                // Initial check on page load
+                onScroll();
+            });
+        </script>
     </body>
-</html>
+</html> 
