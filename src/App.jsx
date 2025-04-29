@@ -6,7 +6,7 @@ import Home from './pages/Home';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/ngiab-website">
         <Header />
         <main>
           <Routes>
