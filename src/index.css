@@ -1,18 +1,81 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html {
+      font-size: 55%;
+  }
+  @screen xl {
+      html {
+          font-size: 80%;
+      }
+  }
+  @screen 2xl {
+      html {
+          font-size: 100%;
+      }
+  }
+}
+@layer components {
+  .btn-primary {
+      @apply bg-primary hover:bg-primary-light text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300;
+  }
+  .section-heading {
+      @apply text-4xl font-bold uppercase mb-4;
+  }
+  .section-subheading {
+      @apply text-gray-600 text-xl mb-16;
+  }
+  .tool-grid {
+      @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4;
+      perspective: 1000px;
+  }
+  .tool-card {
+      @apply bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 hover:shadow-2xl relative;
+      transform-style: preserve-3d;
+  }
+  .tool-card:hover {
+      transform: translateY(-5px);
+  }
+  .tool-image-wrapper {
+      @apply relative overflow-hidden;
+  }
+  .tool-image {
+      @apply w-full transition-transform duration-700 ease-out;
+  }
+  .tool-card:hover .tool-image {
+      transform: scale(1.05);
+  }
+  .tool-overlay {
+      @apply absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300;
+  }
+  .tool-card:hover .tool-overlay {
+      @apply opacity-100;
+  }
+  .tool-content {
+      @apply p-6 relative;
+  }
+  .tool-badge {
+      @apply absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium bg-white/90 backdrop-blur-sm shadow-sm text-gray-700;
+  }
+  .tool-title {
+      @apply text-xl font-bold mb-2 transition-colors duration-300;
+  }
+  .tool-card:hover .tool-title {
+      @apply text-primary;
+  }
+  .tool-description {
+      @apply text-gray-600 mb-4;
+  }
+  .tool-links {
+      @apply absolute inset-0 bg-black/60 opacity-0 transition-all duration-300 flex items-center justify-center;
+      backdrop-filter: blur(2px);
+  }
+  .tool-card:hover .tool-links {
+      @apply opacity-100;
+  }
+  .tool-link {
+      @apply text-white hover:text-primary transition-colors duration-300 flex items-center gap-2 text-xl font-medium;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
