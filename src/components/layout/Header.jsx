@@ -74,14 +74,14 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className="bg-gray-900 fixed w-full z-50 md:hidden">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <div className="flex-1"></div>
             {!isMenuOpen ? (
               // Section name when menu is closed
               <div className="flex-1 flex justify-center overflow-hidden relative">
                 {/* Previous section name (fading out) */}
                 <span 
-                  className={`absolute text-white text-xl uppercase transition-all duration-300 transform ${
+                  className={`absolute text-white text-3xl uppercase transition-all duration-300 transform ${
                     isTransitioning 
                       ? 'scale-75 opacity-0 text-primary' 
                       : 'scale-100 opacity-0'
@@ -91,7 +91,7 @@ const Header = () => {
                 </span>
                 {/* Current section name (fading in) */}
                 <span 
-                  className={`text-white text-xl uppercase transition-all duration-300 transform ${
+                  className={`text-white text-3xl uppercase transition-all duration-300 transform ${
                     isTransitioning 
                       ? 'scale-125 opacity-0' 
                       : 'scale-100 opacity-100'
@@ -107,7 +107,7 @@ const Header = () => {
                   <HashLink 
                     smooth 
                     to="/#about" 
-                    className="text-white hover:text-primary uppercase text-lg transition-colors duration-300"
+                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
                     onClick={handleLinkClick}
                   >
                     About
@@ -115,7 +115,7 @@ const Header = () => {
                   <HashLink 
                     smooth 
                     to="/#portfolio" 
-                    className="text-white hover:text-primary uppercase text-lg transition-colors duration-300"
+                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
                     onClick={handleLinkClick}
                   >
                     Tools
@@ -123,15 +123,15 @@ const Header = () => {
                   <HashLink 
                     smooth 
                     to="/#architecture" 
-                    className="text-white hover:text-primary uppercase text-lg transition-colors duration-300"
+                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
                     onClick={handleLinkClick}
                   >
-                    Architecture
+                    Arch
                   </HashLink>
                   <HashLink 
                     smooth 
                     to="/#contact" 
-                    className="text-white hover:text-primary uppercase text-lg transition-colors duration-300"
+                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
                     onClick={handleLinkClick}
                   >
                     Contact
