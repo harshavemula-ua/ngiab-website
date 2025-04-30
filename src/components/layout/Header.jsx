@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <a className="text-white text-xl font-bold" href="#page-top"></a>
-            <button className="lg:hidden text-white" type="button" id="navbarToggle">
+            <button className="text-2xl lg:hidden text-white" type="button" id="navbarToggle">
                 Menu
                 <i className="fas fa-bars ml-1"></i>
             </button>
