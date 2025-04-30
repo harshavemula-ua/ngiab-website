@@ -64,22 +64,22 @@ const Home = () => {
                         <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
                             <i className="fas fa-bullseye text-4xl"></i>
                         </div>
-                        <h4 className="text-2xl font-bold mb-4">Goal</h4>
-                        <p className="text-gray-600">To revolutionize hydrological modeling by making the NextGen Framework accessible, scalable, and user-friendly to researchers.</p>
+                        <h4 className="tool-title">Goal</h4>
+                        <p className="tool-description">To revolutionize hydrological modeling by making the NextGen Framework accessible, scalable, and user-friendly to researchers.</p>
                     </div>
                     <div data-aos="fade-zoom-in" data-aos-delay="400" data-aos-duration="800" data-aos-easing="ease-in-out-cubic">
                         <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
                             <i className="fas fa-rocket text-4xl"></i>
                         </div>
-                        <h4 className="text-2xl font-bold mb-4">Mission</h4>
-                        <p className="text-gray-600">To make NextGen accessible to all, from local communities to global researchers, by providing user-friendly tools and reproducible workflows.</p>
+                        <h4 className="tool-title">Mission</h4>
+                        <p className="tool-description">To make NextGen accessible to all, from local communities to global researchers, by providing user-friendly tools and reproducible workflows.</p>
                     </div>
                     <div data-aos="fade-zoom-in" data-aos-delay="600" data-aos-duration="800" data-aos-easing="ease-in-out-cubic">
                         <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary text-white mb-8">
                             <i className="fas fa-eye text-4xl"></i>
                         </div>
-                        <h4 className="text-2xl font-bold mb-4">Vision</h4>
-                        <p className="text-gray-600">To create a collaborative ecosystem where shared advancements in hydrological modeling drive innovation.</p>
+                        <h4 className="tool-title">Vision</h4>
+                        <p className="tool-description">To create a collaborative ecosystem where shared advancements in hydrological modeling drive innovation.</p>
                     </div>
                 </div>
             </div>
@@ -224,24 +224,24 @@ const Home = () => {
                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white">
                                 <i class="fas fa-book text-2xl"></i>
                             </div>
-                            <h3 class="text-2xl font-bold ml-4">Learning Resources</h3>
+                            <h3 class="tool-title ml-4">Learning Resources</h3>
                         </div>
                         <ul class="space-y-4">
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-primary mr-3"></i>
-                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/" class="text-gray-300 hover:text-primary transition duration-300" target="_blank" rel="noopener noreferrer">
+                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/" class="text-gray-300 hover:text-primary transition duration-300 tool-link" target="_blank" rel="noopener noreferrer">
                                     Learn about the NGIAB platform on DocuHub
                                 </a>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-primary mr-3"></i>
-                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/ngiabOfficeHours" class="text-gray-300 hover:text-primary transition duration-300" target="_blank" rel="noopener noreferrer">
+                                <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/ngiabOfficeHours" class="text-gray-300 hover:text-primary transition duration-300 tool-link" target="_blank" rel="noopener noreferrer">
                                     Join the NextGen Community Office Hours
                                 </a>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-primary mr-3"></i>
-                                <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" class="text-gray-300 hover:text-primary transition duration-300" target="_blank" rel="noopener noreferrer">
+                                <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" class="text-gray-300 hover:text-primary transition duration-300 tool-link" target="_blank" rel="noopener noreferrer">
                                     Explore our NGIAB-CloudInfra GitHub repository
                                 </a>
                             </li>
@@ -254,18 +254,18 @@ const Home = () => {
                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white">
                                 <i class="fas fa-envelope text-2xl"></i>
                             </div>
-                            <h3 class="text-2xl font-bold ml-4">Get in Touch</h3>
+                            <h3 class="tool-title ml-4">Get in Touch</h3>
                         </div>
                         <ul class="space-y-4">
                             <li class="flex items-center">
                                 <i class="fas fa-envelope text-primary mr-3"></i>
-                                <a href="mailto:ciroh-it-support@ua.edu" class="text-gray-300 hover:text-primary transition duration-300" target="_blank" rel="noopener noreferrer">
+                                <a href="mailto:ciroh-it-support@ua.edu" class="text-gray-300 hover:text-primary transition duration-300 tool-link" target="_blank" rel="noopener noreferrer">
                                     Email: ciroh-it-admin@ua.edu
                                 </a>
                             </li>
                             <li class="flex items-center">
                                 <i class="fab fa-slack text-primary mr-3"></i>
-                                <a href="https://cirohworkspace.slack.com/archives/C057BLQB867" class="text-gray-300 hover:text-primary transition duration-300" target="_blank" rel="noopener noreferrer">
+                                <a href="https://cirohworkspace.slack.com/archives/C057BLQB867" class="text-gray-300 hover:text-primary transition duration-300 tool-link" target="_blank" rel="noopener noreferrer">
                                     Slack: #ciroh-ua-it-support
                                 </a>
                             </li>
@@ -275,8 +275,8 @@ const Home = () => {
                 </div> 
 
                 <div class="mt-16 text-center">
-                    <div class="inline-block bg-gray-800 rounded-lg px-8 py-6 max-w-3xl">
-                        <p class="text-sm text-gray-400 italic">
+                    <div class="inline-block bg-gray-800 rounded-lg px-8 py-6 max-w-5xl">
+                        <p class="text-md text-gray-400 italic">
                             This project received funding under award NA22NWS4320003 from NOAA Cooperative Institute Program. The statements, findings, conclusions, and recommendations are those of the author(s) and do not necessarily reflect the views of NOAA.
                         </p>
                     </div>

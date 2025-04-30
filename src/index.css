@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   html {
-      font-size: 55%;
+      font-size: 66%;
   }
   @screen xl {
       html {
@@ -21,10 +21,10 @@
       @apply bg-primary hover:bg-primary-light text-white font-bold uppercase px-8 py-3 rounded-lg transition duration-300;
   }
   .section-heading {
-      @apply text-4xl font-bold uppercase mb-4;
+      @apply  font-bold uppercase mb-4 text-5xl md:text-4xl;
   }
   .section-subheading {
-      @apply text-gray-600 text-xl mb-16;
+      @apply text-gray-500 mb-16 text-xl italic;
   }
   .tool-grid {
       @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4;
@@ -59,13 +59,13 @@
       @apply absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium bg-white/90 backdrop-blur-sm shadow-sm text-gray-700;
   }
   .tool-title {
-      @apply text-xl font-bold mb-2 transition-colors duration-300;
+      @apply font-bold mb-2 transition-colors duration-300 text-3xl md:text-xl;
   }
   .tool-card:hover .tool-title {
       @apply text-primary;
   }
   .tool-description {
-      @apply text-gray-600 mb-4;
+      @apply text-gray-800 mb-4 text-xl md:text-lg ;
   }
   .tool-links {
       @apply absolute inset-0 bg-black/60 opacity-0 transition-all duration-300 flex items-center justify-center;
@@ -75,7 +75,7 @@
       @apply opacity-100;
   }
   .tool-link {
-      @apply text-white hover:text-primary transition-colors duration-300 flex items-center gap-2 text-xl font-medium;
+      @apply text-white hover:text-primary transition-colors duration-300 flex items-center gap-2 text-xl md:text-lg font-medium;
   }
 }
 
