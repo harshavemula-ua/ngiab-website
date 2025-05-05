@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import waterVideo from "/assets/video/water-video.mp4";
+import docuhubVideo from "/assets/video/docuhub-demo.mp4";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -297,7 +298,7 @@ const Home = () => {
                     loop
                     playsInline
                   >
-                    <source src="/assets/video/docuhub-demo.mp4" type="video/mp4" />
+                    <source src={docuhubVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
