@@ -8,7 +8,7 @@
 }
 
 .animate-carousel {
-  animation: slideLogos 20s linear infinite;
+  animation: slideLogos 30s linear infinite;
   display: inline-block;
   white-space: nowrap;
   will-change: transform;
