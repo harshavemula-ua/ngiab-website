@@ -1,6 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slideLogos {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-carousel {
+  animation: slideLogos 30s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.animate-carousel:hover {
+  animation-play-state: paused;
+}
+
+
+.animate-carousel > div {
+  width: 50%;
+  float: left;
+}
+
 @layer base {
   html {
       font-size: 66%;

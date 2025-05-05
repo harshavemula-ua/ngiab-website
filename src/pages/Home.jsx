@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import waterVideo from "/assets/video/water-video.mp4";
+import docuhubVideo from "/assets/video/docuhub-demo.mp4";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -38,16 +39,27 @@ const Home = () => {
           <source src={waterVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10" data-aos="fade-up" data-aos-delay="200">
-          <h1 className="text-7xl font-bold uppercase mb-6" data-aos="fade-up" data-aos-delay="400">NextGen In A Box</h1>
-          <p className="text-4xl mb-12" data-aos="fade-up" data-aos-delay="600">Transforming Water Modeling in Minutes</p>
-          <div className="space-x-6" data-aos="fade-up" data-aos-delay="800">
-            <HashLink smooth to="/#portfolio" className="btn-primary text-xl px-12 py-4">
-              Our Tools
-            </HashLink>
-            <a className="btn-primary text-xl px-12 py-4" href="http://docs.ciroh.org/training-NGIAB-101/" target="_blank"
-    rel="noopener noreferrer">Getting started</a>
-          </div>  
+          <div className="flex flex-col items-center justify-center space-y-12">
+            <img 
+              src="assets/img/logos/ciroh_dark.png" 
+              alt="CIROH Logo" 
+              className="w-48 md:w-56 mb-4 transform transition-all duration-700 hover:scale-110"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            />
+            <h1 className="text-7xl font-bold uppercase mb-6" data-aos="fade-up" data-aos-delay="400">NextGen In A Box</h1>
+            <p className="text-4xl mb-12" data-aos="fade-up" data-aos-delay="600">Transforming Water Modeling in Minutes</p>
+            <div className="space-x-6" data-aos="fade-up" data-aos-delay="800">
+              <HashLink smooth to="/#portfolio" className="btn-primary text-xl px-12 py-4">
+                Our Tools
+              </HashLink>
+              <a className="btn-primary text-xl px-12 py-4" href="http://docs.ciroh.org/training-NGIAB-101/" target="_blank" rel="noopener noreferrer">
+                Getting started
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -209,7 +221,166 @@ const Home = () => {
                 </div>
             </div>
       </section>
-     
+
+      {/* DocuHub Documentation Section */}
+      <section className="bg-blue-50 py-20">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
+            <h2 className="section-heading">Documentation & Resources</h2>
+            <h3 className="section-subheading">Everything you need to get started with NextGen In A Box</h3>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-start gap-10 max-w-7xl mx-auto">
+            {/* Left side: Text and links */}
+            <div className="w-full md:w-1/4 order-2 md:order-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+              <h3 className="text-2xl font-bold text-primary mb-5">CIROH DocuHub</h3>
+              <p className="mb-8 text-gray-700 leading-relaxed">
+                DocuHub provides comprehensive documentation for NextGen In A Box and its tools.
+              </p>
+              
+              <div className="space-y-8">
+                <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <i className="fas fa-book text-white text-sm"></i>
+                    </div>
+                    <h4 className="font-semibold text-gray-800 ml-3">Documentation</h4>
+                  </div>
+                  <p className="text-gray-600 mb-2 pl-11">Step-by-step guides for running NGIAB.</p>
+                  <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/nextgeninaboxDocker/workflow" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
+                    View Documentation <i className="fas fa-arrow-right ml-1 text-xs"></i>
+                  </a>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <i className="fas fa-video text-white text-sm"></i>
+                    </div>
+                    <h4 className="font-semibold text-gray-800 ml-3">Tutorial Videos</h4>
+                  </div>
+                  <p className="text-gray-600 mb-2 pl-11">Visual tutorials for running NGIAB.</p>
+                  <a href="https://youtu.be/s5jz6Hvn-6s" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
+                    Watch Tutorials <i className="fas fa-arrow-right ml-1 text-xs"></i>
+                  </a>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <i className="fas fa-server text-white text-sm"></i>
+                    </div>
+                    <h4 className="font-semibold text-gray-800 ml-3">Infrastructure Access</h4>
+                  </div>
+                  <p className="text-gray-600 mb-2 pl-11">Access CIROH computing resources.</p>
+                  <a href="https://docs.ciroh.org/docs/services/access" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
+                    Request Access <i className="fas fa-arrow-right ml-1 text-xs"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right side: Video */}
+            <div className="w-full md:w-3/4 order-1 md:order-2" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+              <div className="bg-white p-2 rounded-lg shadow-lg">
+                <div className="relative pb-[56.25%] h-0 overflow-hidden rounded">
+                  <video
+                    ref={videoRef => {
+                      if (videoRef) {
+                        videoRef.addEventListener('loadedmetadata', () => {
+                          videoRef.currentTime = 1.3; // Skip first second
+                          videoRef.play().catch(e => console.log("Video play error:", e));
+                        });
+                      }
+                    }}
+                    className="absolute top-0 left-0 w-full h-full object-contain rounded"
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src={docuhubVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="px-3 py-2 text-center">
+                  <p className="text-sm text-gray-500 italic">
+                    Explore the DocuHub interface and learn how to navigate its comprehensive resources
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Logo Carousel */}
+      <section className="bg-white py-12 overflow-hidden">
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="section-heading">Our Partners & Collaborators</h2>
+            <h3 className="section-subheading">Working together to advance hydrological modeling</h3>
+          </div>
+
+          <div className="relative overflow-hidden w-full">
+            <div className="animate-carousel">
+              <div className="flex items-center space-x-24 mx-8">
+                 
+                 <img 
+                   src="assets/img/logos/aws.png" 
+                   alt="AWS Logo" 
+                   className="h-16 md:h-20 object-contain inline-block" 
+                 />
+                 <img 
+                   src="assets/img/logos/noaa.png" 
+                   alt="NOAA Logo" 
+                   className="h-16 md:h-24 object-contain inline-block" 
+                 />
+                 <img 
+                   src="assets/img/logos/awi.png" 
+                   alt="AWI Logo" 
+                   className="h-16 md:h-20 object-contain inline-block" 
+                 />
+                  <img 
+                    src="assets/img/logos/lynker-light.jpeg" 
+                    alt="Lynker Logo" 
+                    className="h-16 md:h-22 object-contain inline-block" 
+                  />
+                  <img 
+                    src="assets/img/logos/nwc.png" 
+                    alt="National Water Center Logo" 
+                    className="h-16 md:h-20 object-contain inline-block" 
+                  />
+                  <img 
+                    src="assets/img/logos/byu.png" 
+                    alt="BYU Logo" 
+                    className="h-16 md:h-20 object-contain inline-block" 
+                  />
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center mt-10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center">
+              <div className="bg-gray-50 px-6 py-4 rounded-lg">
+                <h4 className="font-bold text-lg text-primary mb-2">Partners</h4>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <a href="https://water.noaa.gov/about/nwc" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">National Water Center</a>
+                  <a href="https://lynker.com" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">Lynker Technologies</a>
+                  <a href="https://www.byu.edu" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">BYU</a>
+                  <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">AWS</a>
+                  <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">NOAA</a>
+                  <a href="https://awi.ua.edu" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">AWI</a>
+                </div>
+              </div>
+              <div className="bg-gray-50 px-6 py-4 rounded-lg">
+                <h4 className="font-bold text-lg text-primary mb-1">Collaborators</h4>
+                <p className="text-gray-700 font-bold">CIROH Science and Technology Team</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact + Resources Section */}
       <section class="bg-gray-900 text-white py-20" id="contact">
             <div class="container mx-auto px-4 max-w-7xl">
@@ -277,7 +448,7 @@ const Home = () => {
                 <div class="mt-16 text-center">
                     <div class="inline-block bg-gray-800 rounded-lg px-8 py-6 max-w-5xl">
                         <p class="text-md text-gray-400 italic">
-                            This project received funding under award NA22NWS4320003 from NOAA Cooperative Institute Program. The statements, findings, conclusions, and recommendations are those of the author(s) and do not necessarily reflect the views of NOAA.
+                            This project was supported by the Cooperative Institute for Research to Operations in Hydrology (CIROH) with funding under award NA22NWS4320003 from the NOAA Cooperative Institute Program. The statements, findings, conclusions, and recommendations are those of the author(s) and do not necessarily reflect the opinions of NOAA.
                         </p>
                     </div>
                 </div>
