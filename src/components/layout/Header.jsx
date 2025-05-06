@@ -169,8 +169,8 @@ const Header = () => {
                   </HashLink>
                 </li>
                 <li>
-                  <HashLink smooth to="/#architecture" className="nav-link text-white hover:text-primary uppercase">
-                    Architecture
+                  <HashLink smooth to="/#documentation" className="nav-link text-white hover:text-primary uppercase">
+                    Documentation
                   </HashLink>
                 </li>
                 <li>

@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 
 const Home = () => {
   const videoRef = useRef(null);
+  const docVideoRef = useRef(null);
 
   useEffect(() => {
     // Initialize AOS
@@ -22,6 +23,37 @@ const Home = () => {
         console.log("Video autoplay failed:", error);
       });
     }
+
+    // Create intersection observer for documentation video
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && docVideoRef.current) {
+            // When documentation section is visible, set the time and play
+            docVideoRef.current.currentTime = 1.3; // Skip first second
+            docVideoRef.current.play().catch(e => 
+              console.log("Documentation video play error:", e)
+            );
+            // Unobserve after it's played once
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of the element is visible
+    );
+
+    // Get the documentation section and observe it
+    const documentationSection = document.getElementById('documentation');
+    if (documentationSection) {
+      observer.observe(documentationSection);
+    }
+
+    // Cleanup observer on component unmount
+    return () => {
+      if (documentationSection) {
+        observer.unobserve(documentationSection);
+      }
+    };
   }, []);
 
   return (
@@ -223,21 +255,18 @@ const Home = () => {
       </section>
 
       {/* DocuHub Documentation Section */}
-      <section className="bg-blue-50 py-20">
+      <section className="bg-blue-50 py-20" id="documentation">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
             <h2 className="section-heading">Documentation & Resources</h2>
-            <h3 className="section-subheading">Everything you need to get started with NextGen In A Box</h3>
+            <h3 className="section-subheading">CIROH DocuHub provides comprehensive documentation for NextGen In A Box and its tools.</h3>
           </div>
           
           <div className="flex flex-col md:flex-row items-start gap-10 max-w-7xl mx-auto">
             {/* Left side: Text and links */}
             <div className="w-full md:w-1/4 order-2 md:order-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
               <h3 className="text-2xl font-bold text-primary mb-5">CIROH DocuHub</h3>
-              <p className="mb-8 text-gray-700 leading-relaxed">
-                DocuHub provides comprehensive documentation for NextGen In A Box and its tools.
-              </p>
-              
+                        
               <div className="space-y-8">
                 <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
                   <div className="flex items-center mb-3">
@@ -285,14 +314,7 @@ const Home = () => {
               <div className="bg-white p-2 rounded-lg shadow-lg">
                 <div className="relative pb-[56.25%] h-0 overflow-hidden rounded">
                   <video
-                    ref={videoRef => {
-                      if (videoRef) {
-                        videoRef.addEventListener('loadedmetadata', () => {
-                          videoRef.currentTime = 1.3; // Skip first second
-                          videoRef.play().catch(e => console.log("Video play error:", e));
-                        });
-                      }
-                    }}
+                    ref={docVideoRef}
                     className="absolute top-0 left-0 w-full h-full object-contain rounded"
                     muted
                     loop
