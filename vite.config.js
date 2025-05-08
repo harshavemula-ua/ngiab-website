@@ -21,6 +21,14 @@ export default defineConfig(() => {
     },
     server: {
       port: 3000,
+      proxy: {
+        '/api/docker': {
+          target: 'https://hub.docker.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/docker/, '/v2'),
+          secure: false,
+        }
+      }
     },
   };
 });
