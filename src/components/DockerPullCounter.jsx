@@ -39,7 +39,7 @@ const DockerPullCounter = () => {
   useEffect(() => {
     const fetchPullCount = async () => {
       try {
-        const response = await fetch('https://hub.docker.com/v2/repositories/awiciroh/ciroh-ngen-image');
+        const response = await fetch('https://dockerhub-api-manjilasingh-manjilas-projects.vercel.app/api/docker');
         const data = await response.json();
         setPullCount(data.pull_count);
         setLoading(false);
