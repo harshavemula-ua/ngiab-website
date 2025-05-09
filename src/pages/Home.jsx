@@ -5,6 +5,7 @@ import docuhubVideo from "/assets/video/docuhub-demo.mp4";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import DockerPullCounter from '../components/DockerPullCounter';
+import { trackEvent, EventNames, trackScrollDepth, trackSectionVisibility } from '../utils/analytics';
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -17,6 +18,12 @@ const Home = () => {
       once: true,
       offset: 120,
       easing: 'ease-out',
+    });
+
+    // Initialize analytics tracking
+    trackScrollDepth();
+    ['about', 'portfolio', 'documentation', 'contact'].forEach(sectionId => {
+      trackSectionVisibility(sectionId);
     });
 
     if (videoRef.current) {
@@ -57,6 +64,21 @@ const Home = () => {
     };
   }, []);
 
+  // Track external link clicks
+  const handleExternalLinkClick = (linkName) => {
+    trackEvent(EventNames.EXTERNAL_LINK_CLICK, {
+      link_name: linkName,
+      link_url: window.location.href
+    });
+  };
+
+  // Track tool card hover
+  const handleToolCardHover = (toolName) => {
+    trackEvent(EventNames.TOOL_CARD_HOVER, {
+      tool_name: toolName
+    });
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -85,10 +107,21 @@ const Home = () => {
             <h1 className="text-7xl font-bold uppercase mb-6" data-aos="fade-up" data-aos-delay="400">NextGen In A Box</h1>
             <p className="text-4xl mb-12" data-aos="fade-up" data-aos-delay="600">Transforming Water Modeling in Minutes</p>
             <div className="space-x-6" data-aos="fade-up" data-aos-delay="800">
-              <HashLink smooth to="/#portfolio" className="btn-primary text-xl px-12 py-4">
+              <HashLink 
+                smooth 
+                to="/#portfolio" 
+                className="btn-primary text-xl px-12 py-4"
+                onClick={() => trackEvent(EventNames.BUTTON_CLICK, { button_name: 'our_tools' })}
+              >
                 Our Tools
               </HashLink>
-              <a className="btn-primary text-xl px-12 py-4" href="http://docs.ciroh.org/training-NGIAB-101/" target="_blank" rel="noopener noreferrer">
+              <a 
+                className="btn-primary text-xl px-12 py-4" 
+                href="http://docs.ciroh.org/training-NGIAB-101/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => handleExternalLinkClick('getting_started')}
+              >
                 Getting started
               </a>
             </div>
@@ -139,7 +172,10 @@ const Home = () => {
                 </div>
                 <div className="tool-grid">
                    {/* NGIAB-DataPreprocess */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGIAB-DataPreprocess')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngiab_data_preprocess.jpg" alt="Data Preprocess Tool" />
                             <div className="tool-overlay"></div>
@@ -150,7 +186,13 @@ const Home = () => {
                             <p className="tool-description">Simplify and accelerate data preparation for NextGen simulations with our intuitive preprocessing tool.</p>
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/NGIAB_data_preprocess" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGIAB-DataPreprocess_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
@@ -158,7 +200,10 @@ const Home = () => {
                     </div>
 
                     {/* NGIAB-CloudInfra */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGIAB-CloudInfra')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngiab_cloudinfra.jpg" alt="Cloud Infrastructure" />
                             <div className="tool-overlay"></div>
@@ -167,10 +212,15 @@ const Home = () => {
                         <div className="tool-content">
                             <h4 className="tool-title">NGIAB-CloudInfra</h4>
                             <p className="tool-description">Deploy NextGen Framework seamlessly in cloud environments with our containerized solution.</p>
-                           
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/NGIAB-CloudInfra" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGIAB-CloudInfra_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
@@ -178,7 +228,10 @@ const Home = () => {
                     </div>
 
                     {/* NGIAB-HPCInfra */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGIAB-HPCInfra')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngiab_hpcinfra.jpeg" alt="HPC Infrastructure" />
                             <div className="tool-overlay"></div>
@@ -189,7 +242,13 @@ const Home = () => {
                             <p className="tool-description">Scale your hydrological modeling with our high-performance computing infrastructure.</p>
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/NGIAB-HPCInfra" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/NGIAB-HPCInfra" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGIAB-HPCInfra_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
@@ -197,7 +256,10 @@ const Home = () => {
                     </div>
 
                     {/* NGIAB-TEEHR */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGIAB-TEEHR')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngiab_teehr.png" alt="TEEHR Tool" />
                             <div className="tool-overlay"></div>
@@ -208,7 +270,13 @@ const Home = () => {
                             <p className="tool-description">Advanced tools for iterative and exploratory analysis of hydrologic model performance.</p>
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/ngiab-teehr" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/ngiab-teehr" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGIAB-TEEHR_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
@@ -216,7 +284,10 @@ const Home = () => {
                     </div>
 
                     {/* NGIAB-Visualizer */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGIAB-Visualizer')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngiab_visualizer.jpeg" alt="Visualizer Tool" />
                             <div className="tool-overlay"></div>
@@ -227,7 +298,13 @@ const Home = () => {
                             <p className="tool-description">Interactive visualization platform for exploring hydrological data and model outputs.</p>
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/ngiab-client" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/ngiab-client" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGIAB-Visualizer_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
@@ -235,7 +312,10 @@ const Home = () => {
                     </div>
 
                     {/* NGEN-DataStream */}
-                    <div className="tool-card group">
+                    <div 
+                      className="tool-card group"
+                      onMouseEnter={() => handleToolCardHover('NGEN-DataStream')}
+                    >
                         <div className="tool-image-wrapper">
                             <img className="tool-image" src="assets/img/portfolio/ngen_datastream.jpeg" alt="DataStream Tool" />
                             <div className="tool-overlay"></div>
@@ -246,7 +326,13 @@ const Home = () => {
                             <p className="tool-description">Streamline your hydrologic simulations with our automated workflow orchestration tool.</p>
                         </div>
                         <div className="tool-links">
-                            <a href="https://github.com/CIROH-UA/ngen-datastream" target="_blank" rel="noopener noreferrer" className="tool-link">
+                            <a 
+                              href="https://github.com/CIROH-UA/ngen-datastream" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                              onClick={() => handleExternalLinkClick('NGEN-DataStream_github')}
+                            >
                                 <i className="fab fa-github"></i>
                                 <span>View Source Code</span>
                             </a>
