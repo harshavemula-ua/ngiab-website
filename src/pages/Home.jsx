@@ -4,6 +4,7 @@ import waterVideo from "/assets/video/water-video.mp4";
 import docuhubVideo from "/assets/video/docuhub-demo.mp4";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import DockerPullCounter from '../components/DockerPullCounter';
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -166,6 +167,7 @@ const Home = () => {
                         <div className="tool-content">
                             <h4 className="tool-title">NGIAB-CloudInfra</h4>
                             <p className="tool-description">Deploy NextGen Framework seamlessly in cloud environments with our containerized solution.</p>
+                           
                         </div>
                         <div className="tool-links">
                             <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" target="_blank" rel="noopener noreferrer" className="tool-link">
@@ -351,7 +353,7 @@ const Home = () => {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary opacity-5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
             
             <div className="text-center mb-12 relative">
-              <h3 className="text-3xl font-bold text-gray-800 mb-5">NGIAB 101 Training Module</h3>
+              <h3 className="text-3xl font-bold text-primary mb-5">NGIAB 101 Training Module</h3>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg">
                 Master NextGen In A Box through our training module. From basic concepts to advanced applications, 
                 we'll guide you through every step of the process.
@@ -408,6 +410,19 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+       {/* Docker Pull Counter Section */}
+       <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="section-heading">Community Impact</h2>
+            <h3 className="section-subheading">Join the growing community of researchers using NextGen In A Box</h3>
+          </div>
+          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
+            <DockerPullCounter />
           </div>
         </div>
       </section>
