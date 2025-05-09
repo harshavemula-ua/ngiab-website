@@ -531,6 +531,11 @@ const Home = () => {
                    className="h-16 md:h-20 object-contain inline-block" 
                  />
                  <img 
+                   src="assets/img/logos/gcp.png" 
+                   alt="AWS Logo" 
+                   className="h-16 md:h-20 object-contain inline-block" 
+                 />
+                 <img 
                    src="assets/img/logos/noaa.png" 
                    alt="NOAA Logo" 
                    className="h-16 md:h-24 object-contain inline-block" 
