@@ -1,6 +1,6 @@
 const Tools = () => {
   return (
-         <section className="bg-gray-100 py-20" id="portfolio">
+         <section className="bg-gray-100 py-20" id="tool">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center">
                     <h2 className="section-heading">NextGen In A Box Tools</h2>
@@ -12,7 +12,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngiab_data_preprocess.jpg" alt="Data Preprocess Tool" />
+                            <img className="tool-image" src="assets/img/tool/ngiab_data_preprocess.jpg" alt="Data Preprocess Tool" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">Data Preparation</div>
                         </div>
@@ -38,7 +38,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngiab_cloudinfra.jpg" alt="Cloud Infrastructure" />
+                            <img className="tool-image" src="assets/img/tool/ngiab_cloudinfra.jpg" alt="Cloud Infrastructure" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">Cloud Deployment</div>
                         </div>
@@ -64,7 +64,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngiab_hpcinfra.jpeg" alt="HPC Infrastructure" />
+                            <img className="tool-image" src="assets/img/tool/ngiab_hpcinfra.jpeg" alt="HPC Infrastructure" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">HPC Solutions</div>
                         </div>
@@ -90,7 +90,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngiab_teehr.png" alt="TEEHR Tool" />
+                            <img className="tool-image" src="assets/img/tool/ngiab_teehr.png" alt="TEEHR Tool" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">Evaluation & Analysis</div>
                         </div>
@@ -116,7 +116,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngiab_visualizer.jpeg" alt="Visualizer Tool" />
+                            <img className="tool-image" src="assets/img/tool/ngiab_visualizer.jpeg" alt="Visualizer Tool" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">Data Visualization</div>
                         </div>
@@ -142,7 +142,7 @@ const Tools = () => {
                       className="tool-card group"
                     >
                         <div className="tool-image-wrapper">
-                            <img className="tool-image" src="assets/img/portfolio/ngen_datastream.jpeg" alt="DataStream Tool" />
+                            <img className="tool-image" src="assets/img/tool/ngen_datastream.jpeg" alt="DataStream Tool" />
                             <div className="tool-overlay"></div>
                             <div className="tool-badge">Workflow Orchestration</div>
                         </div>

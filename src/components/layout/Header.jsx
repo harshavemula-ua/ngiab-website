@@ -114,7 +114,7 @@ const Header = () => {
                   </HashLink>
                   <HashLink 
                     smooth 
-                    to="/#portfolio" 
+                    to="/#tool" 
                     className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
                     onClick={handleLinkClick}
                   >
@@ -164,7 +164,7 @@ const Header = () => {
                   </HashLink>
                 </li>
                 <li>
-                  <HashLink smooth to="/#portfolio" className="nav-link text-white hover:text-primary uppercase">
+                  <HashLink smooth to="/#tool" className="nav-link text-white hover:text-primary uppercase">
                     Tools
                   </HashLink>
                 </li>
