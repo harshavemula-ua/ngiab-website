@@ -164,7 +164,7 @@ const Team = () => {
     },
     {
       name: "Benjamin Perry",
-      role: "Software Engineer II",
+      role: "Software Scientist",
       image: "assets/img/team/Chad-Perry.jpg",
       github: "https://github.com/chp2001",
       linkedin: "",
