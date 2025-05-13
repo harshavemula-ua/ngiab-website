@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 const Team = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const [displayCount, setDisplayCount] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const membersPerPage = 8;
 
   const filters = [
     { id: 'all', label: 'All' },
@@ -238,16 +240,25 @@ const Team = () => {
     return selectedFilter === 'all' || member.department === selectedFilter;
   });
 
-  const displayedMembers = filteredMembers.slice(0, displayCount);
-  const hasMore = filteredMembers.length > displayCount;
-  const canShowLess = displayCount > 8;
+  const totalPages = Math.ceil(filteredMembers.length / membersPerPage);
+  const startIndex = (currentPage - 1) * membersPerPage;
+  const displayedMembers = filteredMembers.slice(startIndex, startIndex + membersPerPage);
 
-  const loadMore = () => {
-    setDisplayCount(prev => prev + 8);
+  const handlePageChange = (newPage) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentPage(newPage);
+      setIsTransitioning(false);
+    }, 300);
   };
 
-  const showLess = () => {
-    setDisplayCount(8);
+  const handleFilterChange = (filterId) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setSelectedFilter(filterId);
+      setCurrentPage(1);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   return (
@@ -258,19 +269,16 @@ const Team = () => {
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">Meet our dedicated team of experts working together to transform hydrologic modeling</p>
         </div>
 
-        {/* Filter Section */}
+        {/* filter section to filter member by department */}
         <div className="mb-8">
           <div className="flex flex-wrap justify-center gap-2">
             {filters.map(filter => (
               <button
                 key={filter.id}
-                onClick={() => {
-                  setSelectedFilter(filter.id);
-                  setDisplayCount(8);
-                }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                onClick={() => handleFilterChange(filter.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out
                   ${selectedFilter === filter.id 
-                    ? 'bg-[#317D8C] text-white' 
+                    ? 'bg-[#317D8C] text-white transform scale-105' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'}`}
               >
                 {filter.label}
@@ -279,33 +287,46 @@ const Team = () => {
           </div>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {/* template grid with scale and fade transition */}
+        <div className={`grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 transition-all duration-300 ease-in-out ${
+          isTransitioning 
+            ? 'opacity-0 scale-95' 
+            : 'opacity-100 scale-100'
+        }`}>
           {displayedMembers.map((member, index) => (
-            <div key={index} className="text-center text-gray-500 dark:text-gray-400">
-              <img className="mx-auto mb-4 w-36 h-36 rounded-full" src={member.image} alt={`${member.name} Avatar`} />
+            <div 
+              key={index} 
+              className="text-center text-gray-500 dark:text-gray-400 transform transition-all duration-300 ease-in-out"
+            >
+              <div className="relative overflow-hidden rounded-full mb-4 mx-auto w-36 h-36">
+                <img 
+                  className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" 
+                  src={member.image} 
+                  alt={`${member.name} Avatar`} 
+                />
+              </div>
               <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {member.name}
               </h3>
-              <p>{member.role}</p>
+              <p className="transition-colors duration-300">{member.role}</p>
               <ul className="flex justify-center mt-4 space-x-4">
                 {member.github && (
                   <li>
-                    <a href={member.github} className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300">
+                    <a href={member.github} className="text-gray-900 hover:text-[#317D8C] dark:hover:text-white dark:text-gray-300 transition-colors duration-300">
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
                     </a>
                   </li>
                 )}
                 {member.linkedin && (
                   <li>
-                    <a href={member.linkedin} className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300">
+                    <a href={member.linkedin} className="text-gray-900 hover:text-[#317D8C] dark:hover:text-white dark:text-gray-300 transition-colors duration-300">
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                   </li>
                 )}
                 {member.email && (
                   <li>
-                    <a href={`mailto:${member.email}`} className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300">
+                    <a href={`mailto:${member.email}`} className="text-gray-900 hover:text-[#317D8C] dark:hover:text-white dark:text-gray-300 transition-colors duration-300">
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                       </svg>
@@ -317,25 +338,40 @@ const Team = () => {
           ))}
         </div>
 
-        {/* Load More/Show Less Buttons */}
-        <div className="mt-8 flex justify-center gap-4">
-          {hasMore && (
+        {/* Has pagination - visible only for 'all' filter */}
+        {selectedFilter === 'all' && totalPages > 1 && (
+          <div className="mt-8 flex justify-center items-center gap-4">
             <button
-              onClick={loadMore}
-              className="px-6 py-3 bg-[#317D8C] text-white rounded-lg hover:bg-[#286a77] transition-colors"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1 || isTransitioning}
+              className={`p-2 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${
+                currentPage === 1 || isTransitioning
+                  ? 'text-gray-400 cursor-not-allowed'
+                  : 'text-[#317D8C] hover:bg-[#317D8C] hover:text-white'
+              }`}
             >
-              Load More
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
-          )}
-          {canShowLess && (
+            <span className="text-gray-600 dark:text-gray-400">
+              Page {currentPage} of {totalPages}
+            </span>
             <button
-              onClick={showLess}
-              className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages || isTransitioning}
+              className={`p-2 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${
+                currentPage === totalPages || isTransitioning
+                  ? 'text-gray-400 cursor-not-allowed'
+                  : 'text-[#317D8C] hover:bg-[#317D8C] hover:text-white'
+              }`}
             >
-              Show Less
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
