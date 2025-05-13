@@ -19,33 +19,6 @@ const Team = () => {
 
   const teamMembers = [
     {
-      name: "Steven J. Burian",
-      role: "Director of Alabama Water Institute",
-      image: "assets/img/team/Steven-J-Burian.jpg",
-      github: "",
-      linkedin: "",
-      email: "sburian@ua.edu",
-      department: "awi"
-    },
-    {
-      name: "Purushotham Bangalore",
-      role: "James R. Cudworth Professor",
-      image: "assets/img/team/Purushotham-Bangalore.jpg",
-      github: "",
-      linkedin: "https://www.linkedin.com/in/puribangalore/",
-      email: "pvbangalore@ua.edu",
-      department: "cs"
-    },
-    {
-      name: "Jeffrey Carver",
-      role: "James R. Cudworth Professor",
-      image: "assets/img/team/Jeffrey-Carver.jpg",
-      github: "https://github.com/JeffCarver",
-      linkedin: "https://www.linkedin.com/in/jeff-carver/",
-      email: "carver@cs.ua.edu",
-      department: "cs"
-    },
-    {
       name: "Arpita Patel",
       role: "DevOps Manager and Enterprise Architect",
       image: "assets/img/team/Arpita-Patel.jpg",
@@ -190,7 +163,7 @@ const Team = () => {
       department: "awi"
     },
     {
-      name: "Chad Perry",
+      name: "Benjamin Perry",
       role: "Software Engineer II",
       image: "assets/img/team/Chad-Perry.jpg",
       github: "https://github.com/chp2001",
@@ -232,6 +205,33 @@ const Team = () => {
       github: "https://github.com/Sheargrub",
       linkedin: "",
       email: "ikminor1@crimson.ua.edu",
+      department: "cs"
+    },
+    {
+      name: "Steven J. Burian",
+      role: "Executive Director of CIROH",
+      image: "assets/img/team/Steven-J-Burian.jpg",
+      github: "",
+      linkedin: "",
+      email: "sburian@ua.edu",
+      department: "awi"
+    },
+    {
+      name: "Purushotham Bangalore",
+      role: "James R. Cudworth Professor",
+      image: "assets/img/team/Purushotham-Bangalore.jpg",
+      github: "",
+      linkedin: "https://www.linkedin.com/in/puribangalore/",
+      email: "pvbangalore@ua.edu",
+      department: "cs"
+    },
+    {
+      name: "Jeffrey Carver",
+      role: "James R. Cudworth Professor",
+      image: "assets/img/team/Jeffrey-Carver.jpg",
+      github: "https://github.com/JeffCarver",
+      linkedin: "https://www.linkedin.com/in/jeff-carver/",
+      email: "carver@cs.ua.edu",
       department: "cs"
     }
   ];
