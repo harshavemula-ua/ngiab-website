@@ -218,7 +218,7 @@ const Team = () => {
     },
     {
       name: "Quinn Lee",
-      role: "Student Aide",
+      role: "Research Assistant",
       image: "assets/img/team/Quinn-Lee.jpg",
       github: "https://github.com/quinnylee",
       linkedin: "https://www.linkedin.com/in/quinn-y-lee/",

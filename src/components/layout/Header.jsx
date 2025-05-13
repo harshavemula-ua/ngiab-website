@@ -139,7 +139,15 @@ const Header = () => {
                 </div>
               </div>
             )}
-            <div className="flex-1 flex justify-end">
+            <div className="flex-1 flex justify-end items-center space-x-4">
+              <a 
+                href="https://github.com/ciroh-ua/ngiab-website" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-primary transition-colors duration-300"
+              >
+                <i className="fab fa-github text-2xl"></i>
+              </a>
               <button 
                 className="text-white p-2"
                 onClick={handleMenuClick}
@@ -156,7 +164,7 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <a className="text-white text-xl font-bold" href="#page-top"></a>
-            <div className="flex">
+            <div className="flex items-center space-x-8">
               <ul className="flex space-x-8">
                 <li>
                   <HashLink smooth to="/#about" className="nav-link text-white hover:text-primary uppercase">
@@ -179,6 +187,14 @@ const Header = () => {
                   </HashLink>
                 </li>
               </ul>
+              <a 
+                href="https://github.com/ciroh-ua/ngiab-website" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-primary transition-colors duration-300"
+              >
+                <i className="fab fa-github text-2xl"></i>
+              </a>
             </div>
           </div>
         </div>
