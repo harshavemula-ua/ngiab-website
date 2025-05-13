@@ -338,8 +338,8 @@ const Team = () => {
           ))}
         </div>
 
-        {/* Has pagination - visible only for 'all' filter */}
-        {selectedFilter === 'all' && totalPages > 1 && (
+        {/* Pagination - visible for any filter with more than 8 members */}
+        {totalPages > 1 && (
           <div className="mt-8 flex justify-center items-center gap-4">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
