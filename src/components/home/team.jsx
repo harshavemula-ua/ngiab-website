@@ -73,7 +73,7 @@ const Team = () => {
       department: "awi"
     },
     {
-      name: "Josh Cunningham",
+      name: "Joshua Cunningham",
       role: "Software Engineer III",
       image: "assets/img/team/Josh-Cunningham.png",
       github: "https://github.com/JoshCu",
