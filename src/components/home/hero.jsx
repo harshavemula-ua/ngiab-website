@@ -23,7 +23,7 @@ const Hero = () => {
       }, []);
 
   return (
-       <header className="relative h-screen flex items-center justify-center text-white" data-aos="fade-down" data-aos-duration="1000">
+       <header className="relative h-screen flex items-center justify-center text-white" data-aos="fade-down" data-aos-duration="1000" id="hero">
               <video 
                 ref={videoRef}
                 autoPlay 
