@@ -6,12 +6,28 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [previousSection, setPreviousSection] = useState('');
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+
+  // primary navigation items (always visible)
+  const primaryNav = [
+    { id: 'about', label: 'About', to: '/#about' },
+    { id: 'tool', label: 'Tools', to: '/#tool' },
+    { id: 'contact', label: 'Contact', to: '/#contact' }
+  ];
+
+  // remaining navigation items (listed in More menu)
+  const secondaryNav = [
+    { id: 'documentation', label: 'Documentation', to: '/#documentation' },
+    { id: 'impact', label: 'Impact', to: '/#impact' },
+    { id: 'team', label: 'Team', to: '/#team' },
+    { id: 'partners', label: 'Partners', to: '/#partner' }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       if (isMenuOpen) return;
       
-      const sections = ['about', 'portfolio', 'architecture', 'contact'];
+      const sections = [...primaryNav, ...secondaryNav].map(item => item.id);
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -52,13 +68,13 @@ const Header = () => {
   }, [isMenuOpen, activeSection]);
 
   const getSectionName = (section) => {
-    switch(section) {
-      case 'about': return 'About';
-      case 'portfolio': return 'Tools';
-      case 'architecture': return 'Architecture';
-      case 'contact': return 'Contact';
-      default: return '';
-    }
+    const allSections = [...primaryNav, ...secondaryNav];
+    const found = allSections.find(item => item.id === section);
+    return found ? found.label : '';
+  };
+
+  const isPrimaryNav = (sectionId) => {
+    return primaryNav.some(item => item.id === sectionId);
   };
 
   const handleMenuClick = () => {
@@ -67,6 +83,12 @@ const Header = () => {
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
+    setIsMoreMenuOpen(false);
+  };
+
+  const handleMoreClick = (e) => {
+    e.preventDefault();
+    setIsMoreMenuOpen(!isMoreMenuOpen);
   };
 
   return (
@@ -77,9 +99,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-20">
             <div className="flex-1"></div>
             {!isMenuOpen ? (
-              // Section name when menu is closed
-              <div className="flex-1 flex justify-center overflow-hidden relative">
-                {/* Previous section name (fading out) */}
+              <div className="flex-1 flex justify-center overflow-hidden relative px-20">
                 <span 
                   className={`absolute text-white text-3xl uppercase transition-all duration-300 transform ${
                     isTransitioning 
@@ -89,7 +109,6 @@ const Header = () => {
                 >
                   {getSectionName(previousSection)}
                 </span>
-                {/* Current section name (fading in) */}
                 <span 
                   className={`text-white text-3xl uppercase transition-all duration-300 transform ${
                     isTransitioning 
@@ -101,45 +120,52 @@ const Header = () => {
                 </span>
               </div>
             ) : (
-              // Menu items when menu is open
               <div className="flex-1 flex justify-center">
-                <div className="flex space-x-6">
-                  <HashLink 
-                    smooth 
-                    to="/#about" 
-                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
-                    onClick={handleLinkClick}
-                  >
-                    About
-                  </HashLink>
-                  <HashLink 
-                    smooth 
-                    to="/#portfolio" 
-                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
-                    onClick={handleLinkClick}
-                  >
-                    Tools
-                  </HashLink>
-                  <HashLink 
-                    smooth 
-                    to="/#architecture" 
-                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
-                    onClick={handleLinkClick}
-                  >
-                    Arch
-                  </HashLink>
-                  <HashLink 
-                    smooth 
-                    to="/#contact" 
-                    className="text-white hover:text-primary uppercase text-2xl transition-colors duration-300"
-                    onClick={handleLinkClick}
-                  >
-                    Contact
-                  </HashLink>
+                <div className="flex flex-col space-y-4">
+                  {primaryNav.map(item => (
+                    <HashLink 
+                      key={item.id}
+                      smooth 
+                      to={item.to}
+                      className={`uppercase text-2xl transition-colors duration-300 ${
+                        activeSection === item.id 
+                          ? 'text-primary' 
+                          : 'text-white hover:text-primary'
+                      }`}
+                      onClick={handleLinkClick}
+                    >
+                      {item.label}
+                    </HashLink>
+                  ))}
+                  <div className="pt-2 border-t border-gray-700">
+                    {secondaryNav.map(item => (
+                      <HashLink 
+                        key={item.id}
+                        smooth 
+                        to={item.to}
+                        className={`uppercase text-xl transition-colors duration-300 block py-2 ${
+                          activeSection === item.id 
+                            ? 'text-primary' 
+                            : 'text-white hover:text-primary'
+                        }`}
+                        onClick={handleLinkClick}
+                      >
+                        {item.label}
+                      </HashLink>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
-            <div className="flex-1 flex justify-end">
+            <div className="flex-1 flex justify-end items-center space-x-4">
+              <a 
+                href="https://github.com/ciroh-ua/ngiab-website" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-primary transition-colors duration-300"
+              >
+                <i className="fab fa-github text-2xl"></i>
+              </a>
               <button 
                 className="text-white p-2"
                 onClick={handleMenuClick}
@@ -156,29 +182,90 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <a className="text-white text-xl font-bold" href="#page-top"></a>
-            <div className="flex">
+            <div className="flex items-center space-x-8">
               <ul className="flex space-x-8">
                 <li>
-                  <HashLink smooth to="/#about" className="nav-link text-white hover:text-primary uppercase">
+                  <HashLink 
+                    smooth 
+                    to="/#about" 
+                    className={`nav-link uppercase transition-colors duration-300 ${
+                      activeSection === 'about' 
+                        ? 'text-primary' 
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
                     About
                   </HashLink>
                 </li>
                 <li>
-                  <HashLink smooth to="/#portfolio" className="nav-link text-white hover:text-primary uppercase">
+                  <HashLink 
+                    smooth 
+                    to="/#tool" 
+                    className={`nav-link uppercase transition-colors duration-300 ${
+                      activeSection === 'tool' 
+                        ? 'text-primary' 
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
                     Tools
                   </HashLink>
                 </li>
-                <li>
-                  <HashLink smooth to="/#documentation" className="nav-link text-white hover:text-primary uppercase">
-                    Documentation
-                  </HashLink>
+                <li className="relative">
+                  <button 
+                    onClick={handleMoreClick}
+                    className={`nav-link uppercase flex items-center space-x-1 transition-colors duration-300 ${
+                      !isPrimaryNav(activeSection) && activeSection 
+                        ? 'text-primary' 
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
+                    <span>{!isPrimaryNav(activeSection) && activeSection ? getSectionName(activeSection) : 'More'}</span>
+                    <i className={`fas fa-chevron-down text-xs transition-transform duration-300 ${
+                      isMoreMenuOpen ? 'rotate-180' : ''
+                    }`}></i>
+                  </button>
+                  {isMoreMenuOpen && (
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2">
+                      {secondaryNav.map(item => (
+                        <HashLink
+                          key={item.id}
+                          smooth
+                          to={item.to}
+                          className={`block px-4 py-2 transition-colors duration-300 ${
+                            activeSection === item.id
+                              ? 'text-primary bg-gray-100 dark:bg-gray-700'
+                              : 'text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                          }`}
+                          onClick={handleLinkClick}
+                        >
+                          {item.label}
+                        </HashLink>
+                      ))}
+                    </div>
+                  )}
                 </li>
                 <li>
-                  <HashLink smooth to="/#contact" className="nav-link text-white hover:text-primary uppercase">
+                  <HashLink 
+                    smooth 
+                    to="/#contact" 
+                    className={`nav-link uppercase transition-colors duration-300 ${
+                      activeSection === 'contact' 
+                        ? 'text-primary' 
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
                     Contact
                   </HashLink>
                 </li>
               </ul>
+              <a 
+                href="https://github.com/ciroh-ua/ngiab-website" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-primary transition-colors duration-300"
+              >
+                <i className="fab fa-github text-2xl"></i>
+              </a>
             </div>
           </div>
         </div>

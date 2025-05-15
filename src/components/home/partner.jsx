@@ -1,6 +1,6 @@
 const Partner = () => {
   return (
-     <section className="bg-white py-12 overflow-hidden">
+     <section className="bg-white py-12 overflow-hidden" id="partner">
         <div className="container mx-auto">
           <div className="text-center mb-8">
             <h2 className="section-heading">Our Partners & Collaborators</h2>

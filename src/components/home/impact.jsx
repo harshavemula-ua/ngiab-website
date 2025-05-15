@@ -1,7 +1,7 @@
 import DockerPullCounter from '../../utils/DockerPullCounter';
 const Impact = () => {
   return (
-<section className="py-20 bg-gray-50">
+<section className="py-20 bg-gray-50" id="impact">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
             <h2 className="section-heading">Community Impact</h2>

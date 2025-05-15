@@ -23,7 +23,7 @@ const Hero = () => {
       }, []);
 
   return (
-       <header className="relative h-screen flex items-center justify-center text-white" data-aos="fade-down" data-aos-duration="1000">
+       <header className="relative h-screen flex items-center justify-center text-white" data-aos="fade-down" data-aos-duration="1000" id="hero">
               <video 
                 ref={videoRef}
                 autoPlay 
@@ -50,7 +50,7 @@ const Hero = () => {
                   <div className="space-x-6" data-aos="fade-up" data-aos-delay="800">
                     <HashLink 
                       smooth 
-                      to="/#portfolio" 
+                      to="/#tool" 
                       className="btn-primary text-xl px-12 py-4"
                     >
                       Our Tools
