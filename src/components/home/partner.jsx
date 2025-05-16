@@ -59,6 +59,7 @@ const Partner = () => {
                   <a href="https://lynker.com" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">Lynker Technologies</a>
                   <a href="https://www.byu.edu" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">BYU</a>
                   <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">AWS</a>
+                  <a href="https://cloud.google.com/?hl=en" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">GCP</a>
                   <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">NOAA</a>
                   <a href="https://awi.ua.edu" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-white rounded border border-gray-200 text-sm hover:bg-gray-100 transition-colors">AWI</a>
                 </div>
