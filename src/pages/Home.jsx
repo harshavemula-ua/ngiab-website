@@ -12,6 +12,7 @@ import Hero from '../components/home/hero';
 import Tools from '../components/home/tools';
 import Partner from '../components/home/partner';
 import Contact from '../components/home/contact';
+import Blog from '../components/home/blog';
 
 const Home = () => {
 
@@ -38,6 +39,9 @@ const Home = () => {
 
       {/* Partners Logo Carousel */}
       <Partner />
+
+      {/* Blog Section */}
+      <Blog />
 
       {/* Contact + Resources Section */}
       <Contact />
