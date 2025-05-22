@@ -4,7 +4,7 @@ const Tools = () => {
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center">
                     <h2 className="section-heading">NextGen In A Box Tools</h2>
-                    <h3 className="section-subheading">From data preprocessing with NGIAB DataPreprocess to real-time visualization on the Tethys Platform, these tools work together to empower researchers to drive innovation in hydrology.</h3>
+                    <h3 className="section-subheading">From data preprocessing with NGIAB DataPreprocess to real-time visualization on the Tethys Platform, these tools work together to empower researchers to drive innovation in hydrology. Built with open-source technologies including GitHub, Docker, and Singularity.</h3>
                 </div>
                 <div className="tool-grid">
                    {/* NGIAB-DataPreprocess */}

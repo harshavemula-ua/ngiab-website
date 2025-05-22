@@ -46,7 +46,7 @@ const Hero = () => {
                     data-aos-delay="300"
                   />
                   <h1 className="text-7xl font-bold uppercase mb-6" data-aos="fade-up" data-aos-delay="400">NextGen In A Box</h1>
-                  <p className="text-4xl mb-12" data-aos="fade-up" data-aos-delay="600">Transforming Water Modeling in Minutes</p>
+                  <p className="text-4xl mb-12" data-aos="fade-up" data-aos-delay="600">Transforming Hydrology Modeling using open-source technologies</p>
                   <div className="space-x-6" data-aos="fade-up" data-aos-delay="800">
                     <HashLink 
                       smooth 
