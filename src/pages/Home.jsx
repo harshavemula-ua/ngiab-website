@@ -37,11 +37,11 @@ const Home = () => {
       {/* Our Team Section with images */}
       <Team />
 
-      {/* Partners Logo Carousel */}
-      <Partner />
-
       {/* Blog Section */}
       <Blog />
+
+      {/* Partners Logo Carousel */}
+      <Partner />
 
       {/* Contact + Resources Section */}
       <Contact />
