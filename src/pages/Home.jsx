@@ -34,11 +34,11 @@ const Home = () => {
       {/* Docker Pull Counter Section (gives real time Docker pull count using Vercel api) */}
       <Impact />
 
-      {/* Our Team Section with images */}
-      <Team />
-
       {/* Blog Section */}
       <Blog />
+
+      {/* Our Team Section with images */}
+      <Team />
 
       {/* Partners Logo Carousel */}
       <Partner />
