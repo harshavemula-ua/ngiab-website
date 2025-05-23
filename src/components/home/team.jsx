@@ -66,7 +66,7 @@ const Team = () => {
     },
     {
       name: "Fred Ogden",
-      role: "Chief Scientist (ST), NOAA/NWS Office of Water Prediction",
+      role: "Chief Scientist, NOAA/NWS Office of Water Prediction",
       image: "assets/img/team/Fred-Ogden.jpg",
       linkedin: "https://www.linkedin.com/in/fred-l-ogden-03078273",
       email: "fred.ogden@noaa.gov",
