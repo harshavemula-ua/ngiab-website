@@ -14,7 +14,8 @@ const Team = () => {
     { id: 'byu', label: 'Brigham Young University' },
     { id: 'rti', label: 'RTI International' },
     { id: 'aquaveo', label: 'Aquaveo' },
-    { id: 'uv', label: 'Univerity of Vermont' }
+    { id: 'uv', label: 'Univerity of Vermont' },
+    { id: 'nwc', label: 'National Water Center'}
   ];
 
   const teamMembers = [
@@ -62,6 +63,14 @@ const Team = () => {
       linkedin: "https://www.linkedin.com/in/danames/",
       email: "dan.ames@byu.edu",
       department: "byu"
+    },
+    {
+      name: "Fred Ogden",
+      role: "Chief Scientist (ST), NOAA/NWS Office of Water Prediction",
+      image: "assets/img/team/Fred-Ogden.jpg",
+      linkedin: "https://www.linkedin.com/in/fred-l-ogden-03078273",
+      email: "fred.ogden@noaa.gov",
+      department: "nwc"
     },
     {
       name: "Benjamin Lee",
