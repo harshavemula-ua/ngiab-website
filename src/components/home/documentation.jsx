@@ -68,7 +68,7 @@ const Documentation = () => {
                       <h4 className="font-semibold text-gray-800 ml-3">Documentation</h4>
                     </div>
                     <p className="text-gray-600 mb-2 pl-11">Step-by-step guides for running NGIAB.</p>
-                    <a href="https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/nextgeninaboxDocker/workflow" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
+                    <a href="https://docs.ciroh.org/docs/products/ngiab/" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
                       View Documentation 
                     </a>
                   </div>
@@ -81,7 +81,7 @@ const Documentation = () => {
                       <h4 className="font-semibold text-gray-800 ml-3">Tutorial Videos</h4>
                     </div>
                     <p className="text-gray-600 mb-2 pl-11">Visual tutorials for running NGIAB.</p>
-                    <a href="https://youtu.be/s5jz6Hvn-6s" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
+                    <a href="https://youtu.be/7kjJXvionyw" className="text-primary font-medium hover:underline pl-11 inline-block" target="_blank" rel="noopener noreferrer">
                       Watch Tutorials 
                     </a>
                   </div>
