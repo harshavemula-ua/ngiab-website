@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import docuhubVideo from "/assets/video/NGIAB-DocuHub.mov";
+import docuhubVideo from "/assets/video/ngiab-docuhub.mp4";
 import 'aos/dist/aos.css';
 
 const Documentation = () => {
@@ -11,7 +11,6 @@ const Documentation = () => {
             entries.forEach((entry) => {
               if (entry.isIntersecting && docVideoRef.current) {
                 // When documentation section is visible, set the time and play
-                docVideoRef.current.currentTime = 1.3; // Skip first second
                 docVideoRef.current.play().catch(e => 
                   console.log("Documentation video play error:", e)
                 );
