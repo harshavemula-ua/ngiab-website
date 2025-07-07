@@ -178,7 +178,7 @@ const Tools = () => {
                         </div>
                         <div className="tool-links">
                             <a 
-                              href="https://github.com/CIROH-UA/ngen-cal" 
+                              href="https://github.com/CIROH-UA/ngiab-cal" 
                               target="_blank" 
                               rel="noopener noreferrer" 
                               className="tool-link"
