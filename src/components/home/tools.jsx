@@ -162,6 +162,32 @@ const Tools = () => {
                             </a>
                         </div>
                     </div>
+
+                    {/* NGIAB-Calibration */}
+                    <div 
+                      className="tool-card group"
+                    >
+                        <div className="tool-image-wrapper">
+                            <img className="tool-image" src="assets/img/tool/ngen_calibration.jpeg" alt="Calibration Tool" />
+                            <div className="tool-overlay"></div>
+                            <div className="tool-badge">Calibration</div>
+                        </div>
+                        <div className="tool-content">
+                            <h4 className="tool-title">NGIAB-CAL</h4>
+                            <p className="tool-description">Simplify and automate calibration process for NGIAB.</p>
+                        </div>
+                        <div className="tool-links">
+                            <a 
+                              href="https://github.com/CIROH-UA/ngen-cal" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="tool-link"
+                            >
+                                <i className="fab fa-github"></i>
+                                <span>View Source Code</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
       </section>
