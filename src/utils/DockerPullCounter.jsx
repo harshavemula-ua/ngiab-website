@@ -11,7 +11,7 @@ const DockerPullCounter = () => {
   const [animatedCount, setAnimatedCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const containerRef = useRef(null);
-  const TARGET_PULLS = 10000;
+  const TARGET_PULLS = 15000;
 
   // this makes the animation only happen when the community impact section is visible
   useEffect(() => {
