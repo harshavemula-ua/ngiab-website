@@ -1,11 +1,10 @@
-
 /* Chat Widget Container */
 #chat-widget {
   position: fixed;
   bottom: 20px;
   right: 20px;
   width: 460px;
-  height: 500px;
+  height: 600px;
   display: none;
   flex-direction: column;
   background-color: #ffffff;
@@ -43,18 +42,20 @@
 /* Chat Body */
 #chat-body {
   flex: 1;
-  padding: 16px;
+  padding: 16px 16px 8px 16px; /* Slight bottom trim for better spacing */
   overflow-y: auto;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Chat Input */
 #chat-input {
   border: none;
   border-top: 1px solid #ccc;
-  padding: 14px 18px;
+  padding: 12px 16px;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
@@ -64,23 +65,30 @@
 /* Chat Messages */
 .user-msg,
 .bot-msg {
-  margin-bottom: 12px;
-  max-width: 85%;
+  margin-bottom: 10px;
   padding: 10px 14px;
   border-radius: 12px;
+  word-wrap: break-word;
+  max-width: 90%;
+  display: inline-block;
 }
 
+/* User message aligned to the right */
 .user-msg {
   background-color: #e0f0ff;
   align-self: flex-end;
   text-align: right;
 }
 
+/* Bot message aligned to the left */
 .bot-msg {
   background-color: #ffffff;
   border: 1px solid #ccc;
+  align-self: flex-start;
+  text-align: left;
 }
 
+/* Chat Toggle Button */
 #chat-toggle {
   position: fixed;
   bottom: 20px;
@@ -91,7 +99,7 @@
   background-color: #003566;
   color: white;
   border: none;
-  border-radius: 50%; /* Makes it a circle */
+  border-radius: 50%;
   cursor: pointer;
   z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
