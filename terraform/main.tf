@@ -8,12 +8,6 @@ terraform {
   required_version = ">= 1.0"
 }
 
-variable "region" {
-  description = "AWS Region"
-  type        = string
-  default     = "us-west-2"
-}
-
 provider "aws" {
   region                   = var.region
   shared_credentials_files = ["~/.aws/credentials"]
@@ -139,7 +133,6 @@ resource "aws_lambda_function" "openai_chatbot" {
       NODE_ENV       = "production"
     }
   }
-  # Enable CloudWatch Logs
   depends_on = [
     aws_iam_role_policy_attachment.lambda_basic_exec,
   ]
@@ -194,27 +187,6 @@ resource "aws_apigatewayv2_stage" "default_stage" {
 }
 
 
-variable "openai_api_key" {
-  description = "OpenAI secret project key"
-  type        = string
-  sensitive   = true
-  # Remove the default value for security - pass via environment variable or terraform.tfvars
-}
 
 
-output "api_url" {
-  description = "The API Gateway endpoint URL"
-  value       = "${aws_apigatewayv2_api.http_api.api_endpoint}/chat"
-}
 
-output "lambda_function_name" {
-  description = "Name of the Lambda function"
-  value       = aws_lambda_function.openai_chatbot.function_name
-}
-
-data "aws_caller_identity" "current" {}
-
-output "account_id" {
-  description = "AWS Account ID"
-  value       = data.aws_caller_identity.current.account_id
-}
