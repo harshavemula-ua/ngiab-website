@@ -118,27 +118,6 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_exec" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-# Add CloudWatch Logs policy for better monitoring
-resource "aws_iam_role_policy" "lambda_logs_policy" {
-  name = "${local.project_name}-lambda-logs-policy"
-  role = aws_iam_role.lambda_exec_role.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
-        ]
-        Resource = "arn:aws:logs:*:*:*"
-      }
-    ]
-  })
-}
-
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_dir  = "${path.module}/lambda"
@@ -160,23 +139,13 @@ resource "aws_lambda_function" "openai_chatbot" {
       NODE_ENV       = "production"
     }
   }
-
   # Enable CloudWatch Logs
   depends_on = [
     aws_iam_role_policy_attachment.lambda_basic_exec,
-    aws_iam_role_policy.lambda_logs_policy,
-    aws_cloudwatch_log_group.lambda_logs
   ]
-
   tags = local.common_tags
 }
 
-# CloudWatch Log Group for Lambda
-resource "aws_cloudwatch_log_group" "lambda_logs" {
-  name              = "/aws/lambda/${local.project_name}-function"
-  retention_in_days = 7
-  tags              = local.common_tags
-}
 
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "${local.project_name}-api"
@@ -221,36 +190,8 @@ resource "aws_apigatewayv2_stage" "default_stage" {
   api_id      = aws_apigatewayv2_api.http_api.id
   name        = "$default"
   auto_deploy = true
-
-  # Enable access logging
-  access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.api_gateway_logs.arn
-    format = jsonencode({
-      requestId      = "$context.requestId"
-      ip             = "$context.identity.sourceIp"
-      requestTime    = "$context.requestTime"
-      httpMethod     = "$context.httpMethod"
-      routeKey       = "$context.routeKey"
-      status         = "$context.status"
-      protocol       = "$context.protocol"
-      responseLength = "$context.responseLength"
-      error          = "$context.error.message"
-      integrationError = "$context.integrationErrorMessage"
-    })
-  }
-
   tags = local.common_tags
 }
-
-# CloudWatch Log Group for API Gateway
-resource "aws_cloudwatch_log_group" "api_gateway_logs" {
-  name              = "/aws/apigateway/${local.project_name}-api"
-  retention_in_days = 7
-  tags              = local.common_tags
-}
-
-# Remove the separate OPTIONS route since CORS is now handled at the API level
-
 
 
 variable "openai_api_key" {
@@ -277,4 +218,3 @@ output "account_id" {
   description = "AWS Account ID"
   value       = data.aws_caller_identity.current.account_id
 }
-
