@@ -149,12 +149,6 @@ This chatbot provides information about the **NextGen In A Box (NGIAB)** project
 2. **AWS Permissions**: Verify your AWS credentials have necessary permissions
 3. **Region**: Ensure all resources are deployed in the same region
 
-### Logs
-Check Lambda function logs in CloudWatch:
-```bash
-aws logs describe-log-groups --log-group-name-prefix "/aws/lambda/openai-chatbot"
-```
-
 ## Cleanup
 
 To destroy all resources:
