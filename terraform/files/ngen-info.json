@@ -1,0 +1,119 @@
+{
+  "project": {
+    "name": "NextGen In A Box (NGIAB)",
+    "description": "Containerized and user-friendly solution for running the NextGen National Water Resources Modeling Framework locally.",
+    "repository": "https://github.com/CIROH-UA/NGIAB-CloudInfra",
+    "funding": {
+      "agency": "NOAA",
+      "institute": "CIROH (Cooperative Institute for Research to Operations in Hydrology)",
+      "agreement": "NA22NWS4320003",
+      "university": "The University of Alabama"
+    }
+  },
+  "features": [
+    "Run NextGen Locally: Experiment with the framework on your machine",
+    "Control Over Inputs: Choose specific regions/basins and modify input data",
+    "Simplified Setup: Easy deployment using Docker containers",
+    "Open Research: Promotes transparency through open-source tooling",
+    "Evaluation Tools: Integrated TEEHR evaluation capabilities",
+    "Visualization: Built-in support for output visualization via Tethys Platform"
+  ],
+  "scripts": [
+    {
+      "name": "guide.sh",
+      "description": "General setup and run script for NGIAB"
+    },
+    {
+      "name": "runTeehr.sh",
+      "description": "Runs the TEEHR evaluation tools"
+    },
+    {
+      "name": "viewOnTethys.sh",
+      "description": "Launches Tethys platform to visualize results"
+    }
+  ],
+  "documentation": {
+    "local_docs": "Contained in `docs/` folder within the repo",
+    "central_docs": "https://docs.ciroh.org/products/ngiab"
+  },
+  "docker": {
+    "dockerfile_folder": "docker/",
+    "entrypoint": "Entrypoint script for NGIAB container",
+    "dockerhub": "https://hub.docker.com/r/awiciroh/ciroh-ngen-image"
+  },
+  "visualizations": [
+    {
+      "title": "Nexus Output",
+      "type": "Catchment Time Series"
+    },
+    {
+      "title": "Teehr Plot",
+      "type": "TEEHR Metrics"
+    }
+  ],
+  "caseStudies": [
+    {
+      "name": "Provo River near Woodland",
+      "resource": "https://www.hydroshare.org/resource/8e71a5e2f8b44b09a4b92f83f6c8ad9f/",
+      "description": "Includes calibration files, input data, and setup details"
+    }
+  ],
+  "training": {
+    "ngiab_101": "https://learning.ciroh.org/courses/ngiab-101",
+    "module_id": 301
+  },
+  "contributors": [
+    "Arpita Patel (apatel54@ua.edu) - AWI, CIROH",
+    "Benjamin Lee (blee60@ua.edu) - AWI, CIROH",
+    "Zach Wills (zwills@lynker.com) - Lynker",
+    "Nels Frazier (nfrazier@lynker.com) - Lynker",
+    "Josh Cunningham (jcunningham8@ua.edu) - AWI, CIROH",
+    "Gio Romero (gromero@aquaveo.com) - Aquaveo",
+    "Sam Lamont (slamont@rti.org) - RTI International",
+    "Matthew Denno (mdenno@rti.org) - RTI International",
+    "James Halgren (jshalgren@ua.edu) - AWI, CIROH"
+  ],
+  "sponsorship": {
+    "project_1": "CIROH: Community Water Model Infrastructure, Stewardship, and Integration",
+    "project_2": "Advancing Community NextGen and NGIAB \u2013 Paving the Pathway to Operations",
+    "PI": "Steven Burian & Arpita Patel"
+  },
+  "ecosystem": [
+    {
+      "name": "NGIAB Data Preprocess",
+      "repo": "https://github.com/CIROH-UA/NGIAB-DataPreprocess"
+    },
+    {
+      "name": "NGIAB TEEHR Integration",
+      "repo": "https://github.com/CIROH-UA/NGIAB-Teehr"
+    },
+    {
+      "name": "NGIAB Data Visualizer",
+      "repo": "https://github.com/CIROH-UA/NGIAB-Tethys"
+    },
+    {
+      "name": "NGIAB Calibration",
+      "repo": "https://github.com/CIROH-UA/NGIAB-Calibration"
+    },
+    {
+      "name": "DataStreamCLI",
+      "repo": "https://github.com/CIROH-UA/DataStreamCLI"
+    },
+    {
+      "name": "NextGen Framework Prototype",
+      "repo": "https://github.com/NOAA-OWP/ngen"
+    },
+    {
+      "name": "Community ngen Repository",
+      "repo": "https://github.com/NOAA-OWP/ngen"
+    },
+    {
+      "name": "Community troute Repository",
+      "repo": "https://github.com/NOAA-OWP/troute"
+    }
+  ],
+  "contributing": {
+    "guide": "https://github.com/CIROH-UA/NGIAB-CloudInfra/blob/main/CONTRIBUTING.md",
+    "notes": "Contains GitHub workflows, issue templates, and older files in `.github/` and `archive/` folders"
+  }
+}
