@@ -14,10 +14,6 @@ provider "aws" {
   profile                  = "default"
 }
 
-module "s3_resources" {
-  source = "./s3"
-}
-
 module "api_gateway" {
   source         = "./api_gateway"
   openai_api_key = var.openai_api_key
