@@ -1,6 +1,6 @@
 output "api_url" {
   description = "The API Gateway endpoint URL"
-  value       = "${module.api_gateway.api_url}/chat"
+  value       = "${module.api_gateway.api_url}"
 }
 
 output "lambda_function_name" {
