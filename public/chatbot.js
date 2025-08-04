@@ -2,7 +2,8 @@ let ngenData = null;
 
 async function fetchNgenData() {
   try {
-    const response = await fetch("https://ngen-chatbot-data.s3.us-west-2.amazonaws.com/ngen-info.json");
+    const response = await fetch("https://ngen-chatbot-data-ua.s3.us-west-2.amazonaws.com/ngen-info.json.json");
+ // Local file in the same directory
     if (!response.ok) throw new Error("Network response was not ok");
     ngenData = await response.json();
   } catch (error) {
@@ -10,6 +11,7 @@ async function fetchNgenData() {
     ngenData = null;
   }
 }
+
 
 window.addEventListener("DOMContentLoaded", async () => {
   const toggle = document.getElementById("chat-toggle");
@@ -91,4 +93,3 @@ If the user asks something unrelated to dataloaded, respond with:
     });
   }
 });
-v
