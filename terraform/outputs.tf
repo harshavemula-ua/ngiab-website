@@ -12,3 +12,8 @@ output "account_id" {
   description = "AWS Account ID"
   value       = module.api_gateway.account_id
 }
+
+output "s3_url" {
+  description = "S3 url"
+  value = module.s3.info_url
+}
