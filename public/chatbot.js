@@ -49,29 +49,29 @@ window.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+
     const messages = [
       {
         role: "system",
-        content: `You are an assistant for the NextGen In A Box (NGIAB) project.
+        content: `You are a helpful assistant for the NextGen In A Box (NGIAB) project, designed to provide information to users of all ages.
 
-Answer only with concise, accurate information strictly based on the following JSON:
-
-${JSON.stringify(ngenData, null, 2)}
-
-If the user asks for links, return them as HTML anchor tags (e.g., <a href="URL">link text</a>) instead of plain URLs.
-
-If the user asks something unrelated to dataloaded, respond with:
-"Sorry, I cant Answer that as i am not trained for that"`
+    Your guidelines:
+    - Answer concisely and accurately using only information from this data: ${JSON.stringify(ngenData, null, 2)}
+    - For URLs, format them as clickable HTML links: <a href="URL" target="_blank" style="text-decoration: underline;">descriptive text</a>
+    - For questions outside the provided data scope, respond: "I can only help with NGIAB-related questions based on my available data. Is there something specific about the NextGen In A Box project I can help you with?"
+    - Use age-appropriate, clear language suitable for all users including those under 18
+    - Be welcoming and helpful while staying focused on NGIAB topics`
       },
       {
-        role: "user",
+        role: "user", 
         content: msgText
       }
     ];
 
+
     chatInput.value = '';
 
-    fetch("https://rfh4nztbkj.execute-api.us-west-2.amazonaws.com/chat", {
+    fetch("https://3yo38opf42.execute-api.us-west-2.amazonaws.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages })
@@ -94,4 +94,3 @@ If the user asks something unrelated to dataloaded, respond with:
     });
   }
 });
-v
