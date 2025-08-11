@@ -1,0 +1,62 @@
+/* Chat Toggle Button */
+#chat-toggle {
+    display: none;
+    box-shadow: 0 4px 12px rgba(49, 125, 140, 0.3);
+  }
+  
+  /* Chat Widget */
+  #chat-widget {
+    display: none;
+  }
+  
+  /* Chat Body */
+  #chat-body {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(49, 125, 140) #f1f5f9;
+  }
+  
+  /* Custom scrollbar styling for chat body */
+  #chat-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #chat-body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  #chat-body::-webkit-scrollbar-thumb {
+    background: rgb(49, 125, 140);
+    border-radius: 3px;
+  }
+  
+  #chat-body::-webkit-scrollbar-thumb:hover {
+    background: rgb(62, 158, 177);
+  }
+  
+  /* Chat Messages */
+  .user-msg,
+  .bot-msg {
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    max-width: 90%;
+    display: inline-block;
+  }
+  
+  /* User message aligned to the right */
+  .user-msg {
+    background-color: rgb(49, 125, 140);
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  /* Bot message aligned to the left */
+  .bot-msg {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    align-self: flex-start;
+    text-align: left;
+  }
