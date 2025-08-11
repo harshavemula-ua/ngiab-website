@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/x-icon" href="assets/img/tool/ngiab_cloudinfra.jpg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="A website for NextGen In A Box" />
-        <title>NextGen In A Box</title>
-        <!-- Font Awesome -->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <script type="module" src="/src/index.jsx"></script>
-    </head>
-    <body class="font-montserrat" id="page-top">
-        <div id="root"></div>
-    </body>
-</html> 
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="assets/img/tool/ngiab_cloudinfra.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A website for NextGen In A Box" />
+    <title>NextGen In A Box</title>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" />
+
+    <!-- Chatbot CSS -->
+    <link rel="stylesheet" href="/css/chatbot.css" />
+
+    <!-- Vite React App -->
+    <script type="module" src="/src/index.jsx"></script>
+  </head>
+
+  <body class="font-montserrat" id="page-top">
+    <div id="root"></div>
+
+    <!-- Chatbot Toggle Button -->
+    <button 
+      id="chat-toggle" 
+      onclick="showChat()" 
+      class="fixed bottom-5 right-5 w-[70px] h-[70px] text-3xl bg-primary text-white border-none rounded-full cursor-pointer z-[9999] shadow-lg hover:bg-primary-light hover:scale-105 transition-all duration-200 flex items-center justify-center"
+    >
+      💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div 
+      id="chat-widget" 
+      class="fixed bottom-5 right-5 w-[360px] h-[500px] hidden flex-col bg-white rounded-2xl shadow-xl font-montserrat z-[9999] overflow-hidden border border-gray-200"
+    >
+      <div 
+        id="chat-header"
+        class="bg-gradient-to-r from-primary to-primary-light text-white px-6 py-4 text-lg font-semibold flex justify-between items-center shadow-md"
+      >
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+            <span class="text-white text-sm">💬</span>
+          </div>
+          <div>
+            <div class="font-bold text-white">NextGen In A Box</div>
+            <div class="text-xs text-white/80 font-normal">AI Assistant</div>
+          </div>
+        </div>
+        <button 
+          id="chat-close" 
+          onclick="closeChat()"
+          class="bg-white/10 hover:bg-white/20 border-none text-white text-xl cursor-pointer p-2 rounded-full transition-all duration-200 flex items-center justify-center w-8 h-8"
+        >
+          ×
+        </button>
+      </div>
+      <div 
+        id="chat-body"
+        class="flex-1 p-4 pb-2 overflow-y-auto text-base leading-relaxed bg-slate-50 flex flex-col"
+      ></div>
+      <input 
+        id="chat-input" 
+        type="text" 
+        placeholder="Ask me about NextGen In A Box..."
+        class="border-none border-t border-gray-200 p-3 text-base w-full box-border outline-none bg-white focus:border-t-primary transition-colors duration-200"
+      />
+    </div>
+
+    <!-- Chatbot JS -->
+    <script type="module" src="/js/chatbot.js"></script>
+  </body>
+</html>
